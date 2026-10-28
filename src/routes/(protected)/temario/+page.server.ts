@@ -23,28 +23,12 @@ import { asc } from "drizzle-orm";
 
 import { getDb } from "#lib/server/db";
 import { subjects, subjectUnits } from "#lib/server/db/schema";
+import { parseUnit, type Unit } from "#lib/utils/temario";
 
 import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
 const env = workerEnv as OpenSimWorkerEnv;
-
-interface Subtopic {
-	index: string;
-	title: string;
-	evalFrom: string | null;
-	evalTo: string | null;
-}
-
-interface Unit {
-	unitNumber: number;
-	title: string;
-	subtopics: Subtopic[];
-	evalFrom: string | null;
-	evalTo: string | null;
-	instruments: string[];
-	criteria: string[];
-}
 
 interface SubjectWithTemario {
 	canonicalId: string;
@@ -53,42 +37,13 @@ interface SubjectWithTemario {
 	units: Unit[];
 }
 
-const EMPTY: { subjects: SubjectWithTemario[]; coverage: { withTemario: number; total: number } } =
-	{
-		subjects: [],
-		coverage: { withTemario: 0, total: 0 },
-	};
-
-/**
- * A stored column that cannot be read must not take the page down: the
- * unit still has a title, and an empty list is the truthful rendering of
- * a list this row does not establish.
- */
-function parseJson<T>(raw: string | null, fallback: T): T {
-	if (raw === null) return fallback;
-	try {
-		const parsed = JSON.parse(raw);
-		return (Array.isArray(parsed) ? parsed : fallback) as T;
-	} catch {
-		return fallback;
-	}
-}
-
-/**
- * A subtopic is only a subtopic if the stored element is an object. `null`
- * and primitives inside the JSON array are real enough to appear — one
- * malformed element must not take the whole page down, so each becomes an
- * empty entry the renderer shows as a blank line rather than a crash.
- */
-function toSubtopic(raw: unknown): Subtopic {
-	const o = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
-	return {
-		index: typeof o.index === "string" ? o.index : "",
-		title: typeof o.title === "string" ? o.title : "",
-		evalFrom: typeof o.evalFrom === "string" ? o.evalFrom : null,
-		evalTo: typeof o.evalTo === "string" ? o.evalTo : null,
-	};
-}
+const EMPTY: {
+	subjects: SubjectWithTemario[];
+	coverage: { withTemario: number; total: number };
+} = {
+	subjects: [],
+	coverage: { withTemario: 0, total: 0 },
+};
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const u = locals.user;
@@ -99,7 +54,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const [subjectRows, unitRows] = await Promise.all([
 		db
-			.select({ canonicalId: subjects.canonicalId, code: subjects.code, name: subjects.name })
+			.select({
+				canonicalId: subjects.canonicalId,
+				code: subjects.code,
+				name: subjects.name,
+			})
 			.from(subjects)
 			.orderBy(asc(subjects.code)),
 		db
@@ -119,15 +78,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const unitsBySubject = new Map<string, Unit[]>();
 	for (const row of unitRows) {
-		const unit: Unit = {
-			unitNumber: row.unitNumber,
-			title: row.title,
-			subtopics: parseJson<unknown[]>(row.subtopicsJson, []).map(toSubtopic),
-			evalFrom: row.evalFrom,
-			evalTo: row.evalTo,
-			instruments: parseJson<string[]>(row.instruments, []),
-			criteria: parseJson<string[]>(row.criteria, []),
-		};
+		const unit = parseUnit(row);
 		const bucket = unitsBySubject.get(row.subjectCanonicalId);
 		if (bucket) bucket.push(unit);
 		else unitsBySubject.set(row.subjectCanonicalId, [unit]);

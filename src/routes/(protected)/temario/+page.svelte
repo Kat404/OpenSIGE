@@ -10,9 +10,15 @@
   Units live inside a collapsed <details> on purpose: the plan has 32 units
   and 223 subtopics, and rendering all of them open is the same 2 450-node
   page T9.14 removed from /reinscripcion.
+
+  Every subject — in BOTH lists — links to its own detail page
+  (/detalle/<canonicalId>). The link lives OUTSIDE the <details>: a <summary>
+  carries the button role, and an interactive element inside one is the
+  `nested-interactive` violation axe-core reports.
 -->
 <script lang="ts">
 import { Badge } from "#lib/components/ui";
+import { evaluationWindow } from "#lib/utils/temario";
 import type { PageData } from "./$types";
 
 let { data }: { data: PageData } = $props();
@@ -25,13 +31,6 @@ const subtopicCount = $derived(
 		0,
 	),
 );
-
-function windowText(from: string | null, to: string | null): string {
-	if (from && to) return `${from} – ${to}`;
-	if (from) return `Desde ${from}`;
-	if (to) return `Hasta ${to}`;
-	return "";
-}
 </script>
 
 <svelte:head>
@@ -66,7 +65,7 @@ function windowText(from: string | null, to: string | null): string {
 			</h2>
 			<ul class="temario__list">
 				{#each conTemario as subject (subject.canonicalId)}
-					<li>
+					<li class="temario__row">
 						<details class="temario__item">
 							<summary class="temario__summary">
 								<span class="temario__code">{subject.code}</span>
@@ -83,9 +82,9 @@ function windowText(from: string | null, to: string | null): string {
 											<span class="temario__unit-number">Unidad {unit.unitNumber}</span>
 											{unit.title}
 										</p>
-										{#if windowText(unit.evalFrom, unit.evalTo)}
+										{#if evaluationWindow(unit.evalFrom, unit.evalTo)}
 											<p class="temario__unit-window">
-												Evaluación: {windowText(unit.evalFrom, unit.evalTo)}
+												Evaluación: {evaluationWindow(unit.evalFrom, unit.evalTo)}
 											</p>
 										{/if}
 										{#if unit.subtopics.length > 0}
@@ -96,9 +95,9 @@ function windowText(from: string | null, to: string | null): string {
 															<span class="temario__subtopic-index">{subtopic.index}</span>
 														{/if}
 														<span class="temario__subtopic-title">{subtopic.title}</span>
-														{#if windowText(subtopic.evalFrom, subtopic.evalTo)}
+														{#if evaluationWindow(subtopic.evalFrom, subtopic.evalTo)}
 															<span class="temario__subtopic-window">
-																{windowText(subtopic.evalFrom, subtopic.evalTo)}
+																{evaluationWindow(subtopic.evalFrom, subtopic.evalTo)}
 															</span>
 														{/if}
 													</li>
@@ -115,6 +114,9 @@ function windowText(from: string | null, to: string | null): string {
 								{/each}
 							</ol>
 						</details>
+						<a class="temario__link" href="/detalle/{subject.canonicalId}"
+							>Ver detalle de {subject.code}</a
+						>
 					</li>
 				{/each}
 			</ul>
@@ -134,6 +136,9 @@ function windowText(from: string | null, to: string | null): string {
 						<span class="temario__name">{subject.name}</span>
 						<span class="temario__absent-note"
 							>El portal no publica el temario de esta materia</span
+						>
+						<a class="temario__link" href="/detalle/{subject.canonicalId}"
+							>Ver detalle de {subject.code}</a
 						>
 					</li>
 				{/each}
@@ -216,6 +221,26 @@ function windowText(from: string | null, to: string | null): string {
 	border: 1px solid var(--border-default);
 	border-radius: var(--radius-2);
 	padding: var(--space-2) var(--space-3);
+}
+
+/* A subject with a published syllabus carries the detail link BELOW its
+   collapsed block: the link cannot live inside the <summary>, which
+   holds the button role. `align-items` stays at the default stretch so
+   the collapsed block keeps the full width it had as a block child. */
+.temario__row {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.temario__link {
+	font-size: var(--text-xs);
+	color: var(--brand-700);
+	text-decoration: none;
+}
+
+.temario__link:hover {
+	text-decoration: underline;
 }
 
 .temario__item--absent {
