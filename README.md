@@ -234,3 +234,14 @@ entirely synthetic, that is a one-file change.
 - No Tailwind, no Lenis, no Motion.dev — pure Svelte 5 + CSS tokens
 - WCAG 2.1 AA contrast on text
 - Subpath imports `#lib/*` (SvelteKit 3 future); `$lib/*` still works as fallback
+
+## Disclaimer
+
+OpenSIM is a FOSS redesign of an institutional system. It is **not** a replica of the SIM
+and not a data mirror: the institution publishes part of its academic data and none of its
+scheduling, so a faithful copy is impossible by construction. The published half is taken
+seriously; the other half is declared rather than filled in.
+
+The code is released into the public domain under [The Unlicense](https://unlicense.org).
+The license text lives in [`UNLICENSE`](UNLICENSE) at the root of the repository — one file
+is enough, and it is the one GitHub's license detection reads.

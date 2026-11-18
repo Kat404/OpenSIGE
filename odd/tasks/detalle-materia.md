@@ -7,7 +7,8 @@ delivery: work-unit commits en la rama de feature
 test-runner: just qa-fast · just test-e2e
 continues: odd/tasks/vite-plus-migration.md (toolchain unificada)
 decide: el mantenedor (2026-10-28) — la siguiente feature es `/detalle`, y la higiene
-  (LICENSE, tag v0.1.0, account_id) quedó cerrada en el mismo día.
+  (LICENSE, tag v0.1.0, account_id) quedó cerrada en el mismo día. El `LICENSE` se borró
+  el 2026-11-18: duplicaba el `UNLICENSE`, que el repo tenía desde el primer commit.
 -->
 
 # `/detalle` — la página por materia
@@ -91,9 +92,9 @@ El arreglo es un alias explícito (`sql<string|null>`${specialties.name}`.as("sp
 
 - **2026-10-28 — Creado.** El mantenedor eligió `/detalle` como siguiente feature y
   (LICENSE + tag + `account_id`) como higiene. La higiene quedó cerrada antes de este
-  documento: `LICENSE` (The Unlicense, que el README prometía desde el primer commit),
-  `account_id` en `wrangler.jsonc` (la trampa del 7403) y el primer tag del repo, `v0.1.0`,
-  anotado y firmado con GPG.
+  documento: `LICENSE` (The Unlicense, que el repo ya tenía como `UNLICENSE` desde el
+  primer commit), `account_id` en `wrangler.jsonc` (la trampa del 7403) y el primer tag
+  del repo, `v0.1.0`, anotado y firmado con GPG.
 - **2026-10-28 — Hecha y verificada.** El worker construyó la ruta, extrajo el parseo a
   `src/lib/utils/temario.ts` (las dos rutas lo usan; `/temario` no cambia de salida) y escribió
   las specs. El padre corrió la suite e2e completa: **234 verdes**, incluidas las 5 specs de
@@ -102,3 +103,12 @@ El arreglo es un alias explícito (`sql<string|null>`${specialties.name}`.as("sp
   `svelte-kit sync` reescribe `.vscode/extensions.json` en cada `just check`, así que el
   archivo versionado era ruido que el gate tocaba. Ahora está en `.gitignore` y el árbol
   sigue limpio después de la puerta.
+- **2026-11-18 — El `LICENSE` sale del repo.** El mantenedor lo borró: el `UNLICENSE` —el
+  texto de The Unlicense, que el repo tiene desde el primer commit— ya decía lo mismo, y
+  los dos archivos diferían en un carácter (`unlicense.org/` contra `unlicense.org`). La
+  detección de licencia de GitHub no pierde nada: `UNLICENSE` casa con la misma expresión
+  que `LICENSE` (licensee: `LICENSE_REGEX = /(un)?licen[sc]e/i`, puntuación 1.00), así que
+  la API `/license` sigue contestando `Unlicense` con `file: UNLICENSE`. De paso, el
+  `Containerfile.ci` declaraba `org.opencontainers.image.licenses="MIT"` y el README no
+  decía nada de la licencia aunque `AGENTS.md` señalaba este README: ahora el README tiene
+  su sección y el contenedor dice Unlicense.
