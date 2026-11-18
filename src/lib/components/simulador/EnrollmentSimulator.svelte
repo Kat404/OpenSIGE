@@ -33,7 +33,7 @@
   than letting an empty grid imply "no conflicts".
 -->
 <script lang="ts">
-import { CircleAlert, CircleCheck, FilePenLine } from "@lucide/svelte";
+import { CircleCheck, CircleExclamationPoint, FilePenLine } from "@lucide/svelte";
 import { Badge, Button, Card } from "#lib/components/ui";
 import { findConflicts } from "#lib/utils/schedule-conflict";
 import CourseFilter from "./CourseFilter.svelte";
@@ -141,6 +141,7 @@ function pageHref(target: number): string {
 	if (period) params.set("period", period);
 	if (offer.query) params.set("q", offer.query);
 	if (offer.credits) params.set("credits", offer.credits);
+	if (offer.lab) params.set("lab", offer.lab);
 	if (target > 1) params.set("page", String(target));
 	return `?${params.toString()}`;
 }
@@ -180,6 +181,7 @@ function rowMeta(g: OfferGroup): string {
 				query={offer.query}
 				area=""
 				credits={offer.credits}
+				lab={offer.lab}
 				{period}
 				totalCount={offer.totalCount}
 			/>
@@ -205,7 +207,7 @@ function rowMeta(g: OfferGroup): string {
 
 				{#if formError}
 					<div class="simulator__error" role="alert">
-						<CircleAlert size={16} strokeWidth={1.75} aria-hidden="true" />
+						<CircleExclamationPoint size={16} strokeWidth={1.75} aria-hidden="true" />
 						<span>{formError}</span>
 					</div>
 				{/if}
@@ -242,7 +244,7 @@ function rowMeta(g: OfferGroup): string {
 										</span>
 										{#if conflicts}
 											<Badge variant="danger" size="sm" dot>
-												<CircleAlert size={12} strokeWidth={2} aria-hidden="true" />
+												<CircleExclamationPoint size={12} strokeWidth={2} aria-hidden="true" />
 												Conflicto de horario
 											</Badge>
 										{/if}

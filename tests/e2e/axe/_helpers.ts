@@ -25,6 +25,12 @@ import AxeBuilder from "@axe-core/playwright";
 import type { Page, TestInfo } from "@playwright/test";
 import { expect } from "@playwright/test";
 
+// `wcag21a` (WCAG 2.1 level A) is NOT in this list: adding it surfaces a
+// set of pre-existing violations across most routes, and that cleanup is
+// its own unit of work. The `label-content-name-mismatch` it found on
+// the header's search button is fixed (its accessible name now contains
+// its visible text), but the rest of the set is still open.
+// const TAGS_WITH_21A = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"] as const;
 const TAGS = ["wcag2a", "wcag2aa", "wcag21aa"] as const;
 const FAILING_IMPACTS = new Set(["serious", "critical"]);
 

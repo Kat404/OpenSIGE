@@ -376,6 +376,55 @@ describe("reinscripcion — the offer fits on a screen (T9.14)", () => {
 	});
 });
 
+/**
+ * The laboratory filter (T9.14). The SIM marks a row with a flask when the
+ * group carries a laboratory — that is `course_groups.has_lab`, and it is
+ * what `docs/data/sim-laboratorios.md` documents: 6 subjects whose groups
+ * all carry the mark, 38 theory groups and 64 lab sessions in the real
+ * catalogue.
+ */
+describe("reinscripcion — the laboratory filter (T9.14)", () => {
+	/** Puts the flask on one catalogue row, the way the SIM marks it. */
+	function markLab(groupId: string): void {
+		raw.prepare(`UPDATE course_groups SET has_lab = 1 WHERE id = ?`).run(groupId);
+	}
+
+	it("narrows to the groups that carry a laboratory, in SQL, before the count", async () => {
+		seedCatalogue(raw, OFFER_ROWS);
+		markLab("O-CAT0001-A-3-DOC-001");
+		markLab("O-CAT0002-A-3-DOC-001");
+
+		const data = await load(signedIn("https://opensim.test/reinscripcion?lab=1"));
+
+		// Two matches, and the total reports the match — counting first would
+		// show 475 next to a 2-row result.
+		expect(data.offer.lab).toBe("1");
+		expect(data.offer.totalCount).toBe(2);
+		expect(data.groups.map((g) => g.subjectCode)).toEqual(["CAT0001", "CAT0002"]);
+		expect(data.groups.every((g) => g.hasLab)).toBe(true);
+	});
+
+	it("keeps every group when the laboratory filter is absent", async () => {
+		seedCatalogue(raw, OFFER_ROWS);
+		markLab("O-CAT0001-A-3-DOC-001");
+
+		const data = await load(signedIn());
+
+		// The filter narrows; it never replaces the offer.
+		expect(data.offer.lab).toBe("");
+		expect(data.offer.totalCount).toBe(OFFER_ROWS);
+	});
+
+	it("ignores a laboratory filter it does not recognise", async () => {
+		seedCatalogue(raw, OFFER_ROWS);
+
+		const data = await load(signedIn("https://opensim.test/reinscripcion?lab=yes"));
+
+		expect(data.offer.lab).toBe("");
+		expect(data.offer.totalCount).toBe(OFFER_ROWS);
+	});
+});
+
 describe("reinscripcion — the duplicated offering (the SIM publishes each group twice)", () => {
 	it("never serves two rows sharing (subject, group, teacher), on any page", async () => {
 		seedDuplicatedCatalogue(raw, DUPLICATED_SUBJECTS);

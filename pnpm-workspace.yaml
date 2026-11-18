@@ -6,15 +6,43 @@ allowBuilds:
   workerd: true
 minimumReleaseAgeExclude:
   - "@types/node@26.6.4"
-  - wrangler@4.147.0
+  - wrangler@4.147.0 || 4.160.0
   - e2e@0.21.1
+  - "@voidzero-dev/vite-plus-core@1.5.1 || 1.6.0 || 8.3.8000"
+  - "@voidzero-dev/vite-plus-darwin-arm64@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-darwin-x64@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-linux-arm64-gnu@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-linux-arm64-musl@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-linux-x64-gnu@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-linux-x64-musl@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-win32-arm64-msvc@1.5.1 || 1.6.0 || 1.7.0"
+  - "@voidzero-dev/vite-plus-win32-x64-msvc@1.5.1 || 1.6.0 || 1.7.0"
+  - vite-plus@1.5.1 || 1.6.0 || 1.7.0
+  # Same-day releases the maintainer asked for on 2026-11-10; the 24h
+  # supply-chain age rule otherwise holds them back. Drop any entry you
+  # would rather age first.
+  - "@lucide/svelte@1.71.0"
+  - ai@7.0.169
+  - "@ai-sdk/openai-compatible@3.0.90"
+  - "@sveltejs/kit@3.2.0"
+  - "@cloudflare/workers-types@5.20261110.1"
+  - "@ai-sdk/gateway@4.0.142"
+  - "@ai-sdk/provider-utils@5.0.79"
+  - "@cloudflare/workerd-darwin-64@1.20261110.1"
+  - "@cloudflare/workerd-darwin-arm64@1.20261110.1"
+  - "@cloudflare/workerd-linux-64@1.20261110.1"
+  - "@cloudflare/workerd-linux-arm64@1.20261110.1"
+  - "@cloudflare/workerd-windows-64@1.20261110.1"
+  - miniflare@5.20261110.0-beta
+  - workerd@1.20261110.1
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
-  vite-plus: 1.4.0
+  vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
+  vite-plus: 1.7.0
 overrides:
   vite@*: "catalog:"
-peerDependencyRules:
-  allowAny:
-    - vite
-  allowedVersions:
-    vite: "*"
+  # GHSA-55wc-3pg8-jfw6 + 5 sibling undici advisories: miniflare pins 7.30.1
+  # exactly, and that is the vulnerable version; 7.30.2 is the patched one.
+  # Scoped to miniflare on purpose: a global pin would silently downgrade a
+  # future undici release that carries its own fix. Drop this override when
+  # miniflare ships undici >= 7.30.2.
+  "miniflare>undici": "7.30.2"

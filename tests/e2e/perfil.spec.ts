@@ -90,7 +90,7 @@ test.describe("perfil — the student's own general data", () => {
 		await expect(page.getByRole("link", { name: "Perfil" })).toHaveAttribute("href", "/perfil");
 
 		await expect(async () => {
-			await page.getByRole("button", { name: "Abrir buscador (Ctrl + K)" }).click();
+			await page.getByRole("button", { name: "Buscar (Ctrl + K)" }).click();
 			await expect(page.getByRole("combobox", { name: "Buscar" })).toBeVisible({ timeout: 1_000 });
 		}).toPass({ timeout: 15_000 });
 

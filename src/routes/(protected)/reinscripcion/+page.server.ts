@@ -155,7 +155,14 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	// a clean TypeError -> fail() -> error boundary, instead of a 500
 	// TypeError on `u.controlNumber` (audit R8-7 / P0-3).
 	const u = locals.user;
-	const emptyOffer: OfferPage = { query: "", credits: "", page: 1, pages: 1, totalCount: 0 };
+	const emptyOffer: OfferPage = {
+		query: "",
+		credits: "",
+		lab: "",
+		page: 1,
+		pages: 1,
+		totalCount: 0,
+	};
 	if (!u) {
 		return {
 			period: null,
@@ -222,6 +229,12 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	const requestedCredits = url.searchParams.get("credits");
 	const credits: OfferPage["credits"] =
 		requestedCredits === "lt5" || requestedCredits === "eq5" ? requestedCredits : "";
+	// The SIM marks a row with a flask when the group carries a laboratory;
+	// `has_lab` is that mark, and it is the one the offer row already shows
+	// as a "Lab" badge. `is_lab_session` is a different thing — the separate
+	// zero-credit practical group — so the filter keys on the flask (T9.14).
+	const requestedLab = url.searchParams.get("lab");
+	const lab: OfferPage["lab"] = requestedLab === "1" ? "1" : "";
 	const requestedPage = Number(url.searchParams.get("page") ?? "1");
 
 	// 3. Every predicate the page can narrow by, as SQL. The count and the
@@ -268,6 +281,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	}
 	if (credits === "lt5") conditions.push(lt(subjects.credits, 5));
 	if (credits === "eq5") conditions.push(eq(subjects.credits, 5));
+	if (lab === "1") conditions.push(eq(courseGroups.hasLab, true));
 	// Unconditional (the duplicate predicate is always pushed), so the count
 	// below and the page after it can never disagree about what "the offer" is.
 	const where = and(...conditions);
@@ -372,7 +386,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 		blocks,
 		enrolledCanonicalIds,
 		enrolledBlocks,
-		offer: { query, credits, page, pages, totalCount } satisfies OfferPage,
+		offer: { query, credits, lab, page, pages, totalCount } satisfies OfferPage,
 	};
 };
 
