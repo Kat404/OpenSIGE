@@ -188,6 +188,61 @@ export function repairStructuredOutput(text: string, schema: unknown): string | 
 }
 
 /**
+ * The shape the caller asked for, as the model gets to read it.
+ *
+ * The endpoint honours none of the `response_format` modes, so the schema
+ * never reaches the model through the transport — the runner's own prompt
+ * says "an attached response schema gives the value's shape" and then
+ * "without an attached schema, follow the shape the instruction implies".
+ * The model then paraphrases: `complementary` comes back as
+ * `complementary_credits`, the shim below has no anchor to rename it, and
+ * the runner spends its second (last) model call teaching the model the
+ * names it already had. That second call is the whole difference between a
+ * green lane and a red one, and it is not the model's to decide.
+ *
+ * So the shape goes into the prompt, where the model does read it. The
+ * field NAMES are the caller's contract and the VALUES still come only from
+ * what the model sees on the screen: nothing here can make a test pass that
+ * the screen does not support.
+ */
+function shapePart(schema: unknown): { type: "text"; text: string } | undefined {
+	const inner = innerShape(schema);
+	if (inner === undefined) return undefined;
+	const names = propertyNames(inner);
+	if (names.length === 0) return undefined;
+	return {
+		type: "text",
+		text:
+			`The value must be a JSON object with exactly these fields: ${names.join(", ")}. ` +
+			`Use these names verbatim, and do not add others. The full schema: ${JSON.stringify(inner)}`,
+	};
+}
+
+/**
+ * The prompt with the shape appended to the last user message. A copy, so
+ * the caller's prompt is never mutated.
+ */
+function promptWithShape<T>(prompt: T, part: { type: "text"; text: string }): T {
+	const messages = prompt as Array<{ role: string; content: unknown }>;
+	if (!Array.isArray(messages)) return prompt;
+	for (let i = messages.length - 1; i >= 0; i--) {
+		const message = messages[i];
+		if (message.role !== "user") continue;
+		return messages.map((m, index) =>
+			index === i
+				? {
+						...m,
+						content: Array.isArray(m.content)
+							? [...m.content, part]
+							: `${String(m.content)}\n\n${part.text}`,
+					}
+				: m,
+		) as T;
+	}
+	return prompt;
+}
+
+/**
  * The AI SDK's own seam for exactly this job, with our repair as the transform.
  *
  * `extractJsonMiddleware` ships for the same shape of problem and only strips
@@ -201,10 +256,22 @@ export function repairStructuredOutput(text: string, schema: unknown): string | 
 export function tolerantStructuredOutputMiddleware(): LanguageModelMiddleware {
 	return {
 		specificationVersion: "v4",
-		wrapGenerate: async ({ doGenerate, params }) => {
-			const result = await doGenerate();
+		// The endpoint honours no `response_format` mode, so the shape the
+		// caller asked for has to reach the model some other way. This is
+		// that way: the shape goes into the prompt, which the model reads.
+		transformParams: async ({ params, type }) => {
+			if (type !== "generate") return params;
 			const format = params.responseFormat;
-			if (format?.type !== "json") return result;
+			if (format?.type !== "json") return params;
+			const part = shapePart(format.schema);
+			if (part === undefined) return params;
+			return { ...params, prompt: promptWithShape(params.prompt, part) };
+		},
+		wrapGenerate: async ({ doGenerate, params }) => {
+			const format = params.responseFormat;
+			if (format?.type !== "json") return doGenerate();
+
+			const result = await doGenerate();
 
 			const content = result.content.map((part) => {
 				if (part.type !== "text") return part;
