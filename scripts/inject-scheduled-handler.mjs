@@ -63,7 +63,7 @@ const SCHEDULED_BODY = `	async scheduled(event, env, _ctx) {
 	},`;
 
 const lines = src.split("\n");
-const exportIdx = lines.findIndex((l) => /^export default \{/.test(l));
+const exportIdx = lines.findIndex((l) => l.startsWith("export default {"));
 if (exportIdx === -1) {
 	console.error(
 		"[inject-scheduled] could not find `export default {` in " +
