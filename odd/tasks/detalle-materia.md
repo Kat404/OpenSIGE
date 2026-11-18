@@ -12,9 +12,13 @@ decide: el mantenedor (2026-10-28) — la siguiente feature es `/detalle`, y la 
 
 # `/detalle` — la página por materia
 
-Creado el 2026-10-28. La siguiente feature del roadmap (T9.12): la página donde una materia
-explica su temario. Los datos ya existen — `subject_units` tiene 32 filas y 223 subtemas para
-7 de las 68 materias — y hoy sólo se ven como un índice global dentro de `/temario`.
+Creado el 2026-10-28. La página donde una materia explica su temario. Los datos ya existen —
+`subject_units` tiene 32 filas y 223 subtemas para 7 de las 68 materias — y hasta ahora sólo
+se ven como un índice global dentro de `/temario`.
+
+**No es T9.12:** esa tarea se cerró con la vista `/temario` (la cobertura explícita, commit
+`756246a`, `odd/tasks/phase-9-ui-integration.md`). Esta es su continuación: la misma fuente de
+datos, servida materia por materia.
 
 ## Specs
 
@@ -65,9 +69,12 @@ como en las demás rutas protegidas).
 
 **El bug que el worker encontró y corrigió (y que nadie habría visto en la revisión del
 diff):** `leftJoin(specialties, …)` hacía que `specialties.name` **sobrescribiera**
-`subjects.name` en la fila del resultado — Drizzle mapea una fila unida por **nombre de
-columna**, y las dos tablas tienen `name`. El nombre de la materia se perdía en cada fila.
-La arreglo es un alias explícito (`sql<string|null>`${specialties.name}`.as("specialty_name")`):
+`subjects.name` en la fila del resultado. El mecanismo está una capa más abajo de lo que se
+cree: el driver D1 de miniflare convierte cada fila en un objeto **por nombre de columna**
+(`Object.fromEntries(columns.map((name, i) => [name, row[i]]))`), así que dos columnas
+`name` colapsan en una sola clave (gana la última) y Drizzle después lee ese objeto de
+forma **posicional** (`row[columnIndex]`). El nombre de la materia se perdía en cada fila.
+El arreglo es un alias explícito (`sql<string|null>`${specialties.name}`.as("specialty_name")`):
 `alias()` no basta, porque sigue devolviendo el nombre de la columna.
 
 **Dos decisiones que el worker dejó tomadas y que conviene conocer:**
