@@ -35,6 +35,12 @@ export interface OfferPage {
 	/** The free-text needle as submitted, trimmed; `""` when the filter is clear. */
 	query: string;
 	credits: "" | "lt5" | "eq5";
+	/**
+	 * `"1"` when the offer is narrowed to the groups that carry a laboratory
+	 * — the flask the SIM marks on the offering row (`course_groups.has_lab`)
+	 * — and `""` when the filter is clear (T9.14).
+	 */
+	lab: "" | "1";
 	/** 1-based page actually served, after clamping to `pages`. */
 	page: number;
 	/** Pages the current filter spans; at least 1, even on an empty result. */

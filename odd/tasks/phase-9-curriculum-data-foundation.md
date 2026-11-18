@@ -517,7 +517,7 @@ Las tres acciones que esta tabla listaba (`subject_units`, `course_groups`,
 | **T9.11** | `/horario`: aulas reales | ☐ abierta |
 | **T9.12** | **`/detalle`** primer consumidor real de `subject_units` | ☐ abierta — **desbloqueada el 2026-10-10**: la tabla ya tiene las 32 unidades. Ya no depende de T9.3 |
 | **T9.13** | `/tramites`: regla de los 5 complementarios → Servicio Social | ☐ abierta — **desbloqueada el 2026-10-10**: `complementary_credit_activities` ya existe con 3 filas |
-| **T9.14** | `/reinscripcion`: filtro por área desaparece (D1), aparece el de laboratorio | ☐ abierta — el filtro por área ya está inerte y null-safe; el de laboratorio tiene datos desde el 2026-10-10 con `is_lab_session` |
+| **T9.14** | `/reinscripcion`: filtro por área desaparece (D1), aparece el de laboratorio | ✅ **cerrada 2026-11-18** — el panel trae el control «Laboratorio» (`?lab=1`), la reducción es en SQL y el conteo del panel reporta el conjunto estrechado. El filtro usa **`has_lab`** (el matraz que el SIM marca en la fila), no `is_lab_session`: es el mismo dato que la insignia «Lab» de cada fila, y `is_lab_session` escondería el grupo de teoría emparejado que el alumno también tiene que inscribir |
 
 ## Radio de impacto de las cuatro columnas nullable
 
@@ -913,6 +913,22 @@ verse, no porque se baje el volumen. Un test cubre cada rama.
 Paginación de la oferta (T9.14), detalle de temario (T9.12), `/horario` (T9.11).
 
 ## Log
+
+- **2026-11-18 — Cerrada.** T9.14 quedó cerrada: `/reinscripcion` tiene el filtro de
+  laboratorio. El control es un `Select` del panel (`?lab=1`), el loader lo reduce en SQL
+  (`course_groups.has_lab = 1`) antes del conteo, y `OfferPage.lab` lo devuelve para que el
+  paginador no lo pierda al cambiar de página. **El filtro usa `has_lab`, no
+  `is_lab_session`**: `has_lab` es el matraz que el SIM marca en la fila de oferta — el mismo
+  dato que la insignia «Lab» que cada fila ya mostraba — y son 102 grupos (38 de teoría + 64
+  de sesión de laboratorio) de las 6 materias con laboratorio dedicado de
+  `docs/data/sim-laboratorios.md`. `is_lab_session` habría escondido el grupo de teoría
+  emparejado, que el alumno también tiene que inscribir. El plan apuntaba a
+  `is_lab_session`; la desviación está anotada aquí a propósito.
+  Verificación: `vp test --run` 415/415 (3 tests nuevos en `tests/unit/reinscripcion.test.ts`:
+  la reducción en SQL, el filtro ausente que deja la oferta entera, y un valor no reconocido
+  que se ignora), `just qa-fast` verde, `just build` verde, `just test-e2e` 237 verdes / 0
+  rojos (3 nuevas corridas de `tests/e2e/reinscripcion-lab-filter.spec.ts`, una por proyecto
+  de navegador).
 
 - **2026-10-19 — Cerrado.** T9.10 quedó cerrada: la decisión del mantenedor del 2026-10-13
   (cobertura explícita) y el código la cumplen — `SubjectNode.svelte:85` muestra «Semestre

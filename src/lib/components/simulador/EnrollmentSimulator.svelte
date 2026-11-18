@@ -33,7 +33,7 @@
   than letting an empty grid imply "no conflicts".
 -->
 <script lang="ts">
-import { CircleExclamationPoint, CircleCheck, FilePenLine } from "@lucide/svelte";
+import { CircleCheck, CircleExclamationPoint, FilePenLine } from "@lucide/svelte";
 import { Badge, Button, Card } from "#lib/components/ui";
 import { findConflicts } from "#lib/utils/schedule-conflict";
 import CourseFilter from "./CourseFilter.svelte";
@@ -141,6 +141,7 @@ function pageHref(target: number): string {
 	if (period) params.set("period", period);
 	if (offer.query) params.set("q", offer.query);
 	if (offer.credits) params.set("credits", offer.credits);
+	if (offer.lab) params.set("lab", offer.lab);
 	if (target > 1) params.set("page", String(target));
 	return `?${params.toString()}`;
 }
@@ -180,6 +181,7 @@ function rowMeta(g: OfferGroup): string {
 				query={offer.query}
 				area=""
 				credits={offer.credits}
+				lab={offer.lab}
 				{period}
 				totalCount={offer.totalCount}
 			/>

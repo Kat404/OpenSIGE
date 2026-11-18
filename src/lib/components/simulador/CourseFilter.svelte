@@ -10,6 +10,7 @@
     - Free-text search (code + name, accent-insensitive in SQL)
     - Subject area (single-select, inert — see below)
     - Credits (single-select: all, ≤4, =5)
+    - Laboratory (single-select: all, only the groups that carry one)
 
   The area select carries no `name`, so it is never submitted and never
   reaches the server. `subjects.area` is NULL for all 68 subjects — no
@@ -35,11 +36,12 @@ interface Props {
 	query: string;
 	area: string;
 	credits: "" | "lt5" | "eq5";
+	lab: "" | "1";
 	period: string;
 	totalCount: number;
 }
 
-let { areas, query, area, credits, period, totalCount }: Props = $props();
+let { areas, query, area, credits, lab, period, totalCount }: Props = $props();
 
 const areaOptions = $derived([
 	{ value: "", label: "Todas las áreas" },
@@ -50,6 +52,14 @@ const creditOptions = [
 	{ value: "", label: "Todos los créditos" },
 	{ value: "lt5", label: "Menos de 5 créditos" },
 	{ value: "eq5", label: "5 créditos" },
+];
+
+// The flask the SIM marks on a row whose group carries a laboratory. The
+// offer row already shows the same fact as a "Lab" badge, so the filter and
+// the badge can never disagree (T9.14).
+const labOptions = [
+	{ value: "", label: "Todos los grupos" },
+	{ value: "1", label: "Solo con laboratorio" },
 ];
 </script>
 
@@ -82,6 +92,10 @@ const creditOptions = [
 
 	<div class="filter__row">
 		<Select label="Créditos" name="credits" options={creditOptions} value={credits} />
+	</div>
+
+	<div class="filter__row">
+		<Select label="Laboratorio" name="lab" options={labOptions} value={lab} />
 	</div>
 
 	<Button type="submit" variant="secondary" size="sm" fullWidth>Filtrar</Button>
