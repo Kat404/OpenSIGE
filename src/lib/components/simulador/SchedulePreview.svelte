@@ -18,7 +18,7 @@
       ARIA live region can announce the conflict
 -->
 <script lang="ts">
-import { TriangleAlert } from "@lucide/svelte";
+import { TriangleExclamationPoint } from "@lucide/svelte";
 import { Badge } from "#lib/components/ui";
 import { getSubjectColor } from "#lib/utils/color";
 import { type ConflictBlock, findConflicts } from "#lib/utils/schedule-conflict";
@@ -127,7 +127,7 @@ const positioned = $derived.by(() => {
 	{#if conflictCount > 0}
 		<div class="preview__alert">
 			<Badge variant="danger" size="md" dot>
-				<TriangleAlert size={12} strokeWidth={2} aria-hidden="true" />
+				<TriangleExclamationPoint size={12} strokeWidth={2} aria-hidden="true" />
 				{conflictCount} {conflictCount === 1 ? "conflicto" : "conflictos"} de horario
 			</Badge>
 		</div>

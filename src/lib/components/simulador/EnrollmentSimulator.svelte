@@ -33,7 +33,7 @@
   than letting an empty grid imply "no conflicts".
 -->
 <script lang="ts">
-import { CircleAlert, CircleCheck, FilePenLine } from "@lucide/svelte";
+import { CircleExclamationPoint, CircleCheck, FilePenLine } from "@lucide/svelte";
 import { Badge, Button, Card } from "#lib/components/ui";
 import { findConflicts } from "#lib/utils/schedule-conflict";
 import CourseFilter from "./CourseFilter.svelte";
@@ -205,7 +205,7 @@ function rowMeta(g: OfferGroup): string {
 
 				{#if formError}
 					<div class="simulator__error" role="alert">
-						<CircleAlert size={16} strokeWidth={1.75} aria-hidden="true" />
+						<CircleExclamationPoint size={16} strokeWidth={1.75} aria-hidden="true" />
 						<span>{formError}</span>
 					</div>
 				{/if}
@@ -242,7 +242,7 @@ function rowMeta(g: OfferGroup): string {
 										</span>
 										{#if conflicts}
 											<Badge variant="danger" size="sm" dot>
-												<CircleAlert size={12} strokeWidth={2} aria-hidden="true" />
+												<CircleExclamationPoint size={12} strokeWidth={2} aria-hidden="true" />
 												Conflicto de horario
 											</Badge>
 										{/if}
