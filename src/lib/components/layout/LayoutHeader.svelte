@@ -80,7 +80,9 @@ onMount(() => {
 		type="button"
 		class="header__search"
 		onclick={onOpenPalette}
-		aria-label="Abrir buscador (Ctrl + K)"
+		/* WCAG 2.5.3 (Label in Name): the visible text has to be part of
+		   the accessible name. The axe sweep with `wcag21a` flags it. */
+		aria-label="Buscar (Ctrl + K)"
 	>
 		<Search size={16} strokeWidth={1.75} aria-hidden="true" />
 		<span class="header__search-label">Buscar</span>

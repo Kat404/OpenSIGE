@@ -249,7 +249,9 @@ const subtopicCount = $derived(
 	align-items: baseline;
 	gap: var(--space-2);
 	font-size: var(--text-sm);
-	background-color: var(--bg-subtle);
+	/* `--bg-subtle` never existed in tokens.css: the rule silently fell
+	   back to transparent. `--surface-2` is the token for a nested row. */
+	background-color: var(--surface-2);
 }
 
 .temario__summary {
@@ -271,7 +273,10 @@ const subtopicCount = $derived(
 }
 
 .temario__absent-note {
-	color: var(--fg-tertiary);
+	/* `--fg-tertiary` (#6b7280) on the row's `--surface-2` (#eef0f4) is
+	   4.23:1 and fails WCAG AA (needs 4.5:1). `--fg-secondary` is 8.4:1
+	   there, and 10.6:1 on the dark `--surface-2`. */
+	color: var(--fg-secondary);
 	font-size: var(--text-xs);
 }
 
