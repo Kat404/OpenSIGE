@@ -25,10 +25,16 @@ import type { ProcedureStatus } from "./types";
 
 interface Props {
 	procedures: ProcedureStatus[];
+	/**
+	 * The plan's credit total, so the stepper's percentage of the
+	 * career is computed against the number the loader used — and not
+	 * against a copy of it that can drift.
+	 */
+	totalCredits: number;
 	formNotice?: string | null;
 }
 
-let { procedures, formNotice = null }: Props = $props();
+let { procedures, totalCredits, formNotice = null }: Props = $props();
 
 /**
  * The three procedure forms collect ten fields each, and the action
@@ -44,7 +50,7 @@ const steps: Step[] = $derived(
 	procedures.map((p) => ({
 		id: p.id,
 		label: p.label,
-		description: `${p.creditsRequired} créditos (${Math.round((p.creditsRequired / 260) * 100)}% de la carrera)`,
+		description: `${p.creditsRequired} créditos (${Math.round((p.creditsRequired / totalCredits) * 100)}% de la carrera)`,
 	})),
 );
 
