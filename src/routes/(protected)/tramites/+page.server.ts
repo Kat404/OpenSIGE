@@ -35,7 +35,13 @@ import {
 	studentProfiles,
 	studentProgress,
 } from "#lib/server/db/schema";
-import { COMPLEMENTARY_CREDITS_REQUIRED, evaluateCreditThresholds } from "#lib/utils/dag";
+import {
+	COMPLEMENTARY_CREDITS_REQUIRED,
+	PLAN_CREDITS_TOTAL,
+	RESIDENCY_RETICULAR,
+	SOCIAL_SERVICE_RETICULAR,
+	evaluateCreditThresholds,
+} from "#lib/utils/dag";
 import { formString } from "#lib/utils/form";
 import { PROCEDURE_UNAVAILABLE_NOTICE } from "#lib/utils/procedure-labels";
 
@@ -44,9 +50,7 @@ import type { PageServerLoad } from "./$types";
 
 const env = workerEnv as OpenSimWorkerEnv;
 
-const TOTAL_CREDITS = 260;
 const SOCIAL_SERVICE_CANONICAL_ID = "servicio-social";
-const SOCIAL_SERVICE_RETICULAR_REQUIRED = 182;
 
 export const load: PageServerLoad = async ({ locals }) => {
 	// Explicit guard mirrors reinscripcion/+page.server.ts (audit R8-7 /
@@ -61,16 +65,17 @@ export const load: PageServerLoad = async ({ locals }) => {
 			approvedCredits: 0,
 			complementaryCredits: 0,
 			complementaryRequired: COMPLEMENTARY_CREDITS_REQUIRED,
-			totalCredits: TOTAL_CREDITS,
+			totalCredits: PLAN_CREDITS_TOTAL,
+			socialServiceReticularRequired: SOCIAL_SERVICE_RETICULAR,
 			socialServiceDone: false,
 			procedures: [
 				{
 					id: "servicio-social" as const,
 					label: "Servicio Social",
 					description: "500 horas de práctica profesional en dependencias públicas o privadas.",
-					creditsRequired: SOCIAL_SERVICE_RETICULAR_REQUIRED,
+					creditsRequired: SOCIAL_SERVICE_RETICULAR,
 					creditsHave: 0,
-					creditsRemaining: SOCIAL_SERVICE_RETICULAR_REQUIRED,
+					creditsRemaining: SOCIAL_SERVICE_RETICULAR,
 					percentage: 0,
 					unlocked: false,
 					blockedReason: "No autenticado. Inicia sesión.",
@@ -79,9 +84,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 					id: "residencia" as const,
 					label: "Residencia Profesional",
 					description: "Proyecto terminal con duración de 4 a 6 meses en una organización.",
-					creditsRequired: 208,
+					creditsRequired: RESIDENCY_RETICULAR,
 					creditsHave: 0,
-					creditsRemaining: 208,
+					creditsRemaining: RESIDENCY_RETICULAR,
 					percentage: 0,
 					unlocked: false,
 					blockedReason: "No autenticado. Inicia sesión.",
@@ -91,9 +96,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 					label: "Titulación",
 					description:
 						"Acto protocolario para obtener el título de Ingeniero en Sistemas Computacionales.",
-					creditsRequired: 260,
+					creditsRequired: PLAN_CREDITS_TOTAL,
 					creditsHave: 0,
-					creditsRemaining: 260,
+					creditsRemaining: PLAN_CREDITS_TOTAL,
 					percentage: 0,
 					unlocked: false,
 					blockedReason: "No autenticado. Inicia sesión.",
@@ -127,26 +132,27 @@ export const load: PageServerLoad = async ({ locals }) => {
 			approvedCredits: 0,
 			complementaryCredits: 0,
 			complementaryRequired: COMPLEMENTARY_CREDITS_REQUIRED,
-			totalCredits: TOTAL_CREDITS,
+			totalCredits: PLAN_CREDITS_TOTAL,
+			socialServiceReticularRequired: SOCIAL_SERVICE_RETICULAR,
 			socialServiceDone: false,
 			procedures: [
 				stub(
 					"servicio-social",
 					"Servicio Social",
 					"500 horas de práctica profesional en dependencias públicas o privadas.",
-					SOCIAL_SERVICE_RETICULAR_REQUIRED,
+					SOCIAL_SERVICE_RETICULAR,
 				),
 				stub(
 					"residencia",
 					"Residencia Profesional",
 					"Proyecto terminal con duración de 4 a 6 meses en una organización.",
-					208,
+					RESIDENCY_RETICULAR,
 				),
 				stub(
 					"titulacion",
 					"Titulación",
 					"Acto protocolario para obtener el título de Ingeniero en Sistemas.",
-					260,
+					PLAN_CREDITS_TOTAL,
 				),
 			],
 		};
@@ -197,22 +203,22 @@ export const load: PageServerLoad = async ({ locals }) => {
 	// fail at once; reticular comes first because it is the slower one.
 	const socialServiceBlockReason = ((): string | null => {
 		if (thresholds.canStartSocialService) return null;
-		const missingReticular = SOCIAL_SERVICE_RETICULAR_REQUIRED - approvedCredits;
+		const missingReticular = SOCIAL_SERVICE_RETICULAR - approvedCredits;
 		if (missingReticular > 0) {
-			return `Necesitas ${missingReticular} créditos reticulares más (tienes ${approvedCredits} de ${TOTAL_CREDITS})`;
+			return `Necesitas ${missingReticular} créditos reticulares más (tienes ${approvedCredits} de ${PLAN_CREDITS_TOTAL})`;
 		}
 		const missingComplementary = COMPLEMENTARY_CREDITS_REQUIRED - complementaryCredits;
-		return `Necesitas ${missingComplementary} créditos complementarios más (tienes ${complementaryCredits} de ${COMPLEMENTARY_CREDITS_REQUIRED}). Los complementarios son una puerta aparte: no sustituyen los ${SOCIAL_SERVICE_RETICULAR_REQUIRED} reticulares.`;
+		return `Necesitas ${missingComplementary} créditos complementarios más (tienes ${complementaryCredits} de ${COMPLEMENTARY_CREDITS_REQUIRED}). Los complementarios son una puerta aparte: no sustituyen los ${SOCIAL_SERVICE_RETICULAR} reticulares.`;
 	})();
 
 	const social: ProcedureStatus = {
 		id: "servicio-social",
 		label: "Servicio Social",
 		description: "500 horas de práctica profesional en dependencias públicas o privadas.",
-		creditsRequired: SOCIAL_SERVICE_RETICULAR_REQUIRED,
+		creditsRequired: SOCIAL_SERVICE_RETICULAR,
 		creditsHave: approvedCredits,
-		creditsRemaining: Math.max(0, SOCIAL_SERVICE_RETICULAR_REQUIRED - approvedCredits),
-		percentage: Math.min(100, (approvedCredits / SOCIAL_SERVICE_RETICULAR_REQUIRED) * 100),
+		creditsRemaining: Math.max(0, SOCIAL_SERVICE_RETICULAR - approvedCredits),
+		percentage: Math.min(100, (approvedCredits / SOCIAL_SERVICE_RETICULAR) * 100),
 		unlocked: thresholds.canStartSocialService,
 		blockedReason: socialServiceBlockReason,
 	};
@@ -220,30 +226,30 @@ export const load: PageServerLoad = async ({ locals }) => {
 		id: "residencia",
 		label: "Residencia Profesional",
 		description: "Proyecto terminal con duración de 4 a 6 meses en una organización.",
-		creditsRequired: 208,
+		creditsRequired: RESIDENCY_RETICULAR,
 		creditsHave: approvedCredits,
-		creditsRemaining: Math.max(0, 208 - approvedCredits),
-		percentage: Math.min(100, (approvedCredits / 208) * 100),
+		creditsRemaining: Math.max(0, RESIDENCY_RETICULAR - approvedCredits),
+		percentage: Math.min(100, (approvedCredits / RESIDENCY_RETICULAR) * 100),
 		unlocked: thresholds.canStartResidency,
 		blockedReason: thresholds.canStartResidency
 			? null
-			: `Necesitas ${208 - approvedCredits} créditos más (tienes ${approvedCredits} de ${TOTAL_CREDITS})`,
+			: `Necesitas ${RESIDENCY_RETICULAR - approvedCredits} créditos más (tienes ${approvedCredits} de ${PLAN_CREDITS_TOTAL})`,
 	};
 	const titulacion: ProcedureStatus = {
 		id: "titulacion",
 		label: "Titulación",
 		description:
 			"Acto protocolario para obtener el título de Ingeniero en Sistemas Computacionales.",
-		creditsRequired: 260,
+		creditsRequired: PLAN_CREDITS_TOTAL,
 		creditsHave: approvedCredits,
-		creditsRemaining: Math.max(0, 260 - approvedCredits),
-		percentage: Math.min(100, (approvedCredits / 260) * 100),
+		creditsRemaining: Math.max(0, PLAN_CREDITS_TOTAL - approvedCredits),
+		percentage: Math.min(100, (approvedCredits / PLAN_CREDITS_TOTAL) * 100),
 		unlocked: thresholds.canStartResidency && socialServiceDone,
 		blockedReason:
 			thresholds.canStartResidency && socialServiceDone
 				? null
 				: !thresholds.canStartResidency
-					? `Necesitas ${208 - approvedCredits} créditos más (tienes ${approvedCredits} de ${TOTAL_CREDITS})`
+					? `Necesitas ${RESIDENCY_RETICULAR - approvedCredits} créditos más (tienes ${approvedCredits} de ${PLAN_CREDITS_TOTAL})`
 					: "Debes completar el Servicio Social antes de titularte",
 	};
 
@@ -251,7 +257,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 		approvedCredits,
 		complementaryCredits,
 		complementaryRequired: COMPLEMENTARY_CREDITS_REQUIRED,
-		totalCredits: TOTAL_CREDITS,
+		totalCredits: PLAN_CREDITS_TOTAL,
+		socialServiceReticularRequired: SOCIAL_SERVICE_RETICULAR,
 		socialServiceDone,
 		procedures: [social, residencia, titulacion],
 	};

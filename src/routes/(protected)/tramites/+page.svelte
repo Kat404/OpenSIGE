@@ -39,13 +39,17 @@ const formNotice = $derived(form && "notice" in form ? (form.notice as string) :
 		<p class="tramites__complementary">
 			<strong>{data.complementaryCredits}</strong>
 			de {data.complementaryRequired} créditos complementarios. Servicio Social exige las dos
-			puertas a la vez: los 182 créditos reticulares <em>y</em> los
+			puertas a la vez: los {data.socialServiceReticularRequired} créditos reticulares <em>y</em> los
 			{data.complementaryRequired}
 			complementarios. Los complementarios no aportan créditos reticulares y no los sustituyen.
 		</p>
 	</header>
 
-	<ProcedureStepper procedures={data.procedures} {formNotice} />
+	<ProcedureStepper
+		procedures={data.procedures}
+		totalCredits={data.totalCredits}
+		{formNotice}
+	/>
 </section>
 
 <style>

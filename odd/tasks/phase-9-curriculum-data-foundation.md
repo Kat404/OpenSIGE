@@ -3,14 +3,15 @@
 <!-- odd-tracker
 kind: phase-plan
 status: closed
-last-verified: 2026-10-19
+last-verified: 2026-11-25
 reconciled-against: feat/phase-9-verified-curriculum@c49caea (main@fee9d60)
 sha-warning: los SHA 6ca7c12, 8f40837, ffcd595 y b3fef41 citados en el cuerpo de este archivo predicen la reescritura de firmas GPG del 2026-10-08 y están MUERTOS; los SHA de la sección "Commits que importan" verificados con `git cat-file -e` sí están vivos
 -->
 
 **Estado:** T9.1–T9.7 cerradas salvo T9.5 (cerrada dentro de T9.7) · started 2026-10-07 ·
 **reconciliado 2026-10-08** · **reconciliado 2026-10-10: T9.3, T9.4 y T9.6 cerradas;
-T9.9 cerrada el 2026-10-08 (`17e013b`). Abiertas: T9.10–T9.14.**
+T9.9 cerrada el 2026-10-08 (`17e013b`). Cerradas el 2026-11-18 (T9.14) y el 2026-11-25
+(T9.13). Abiertas: T9.10–T9.12.**
 **Alcance v1:** una sola carrera — **ISIC-2010-224 Ingeniería en Sistemas Computacionales**
 **Fuera de v1:** las otras 12 carreras, sus materias y sus unidades (v2)
 
@@ -18,7 +19,7 @@ T9.9 cerrada el 2026-10-08 (`17e013b`). Abiertas: T9.10–T9.14.**
 > **T9.2 → `8f40837`** `feat(db): subject seriation tri-state and component columns`
 > **T9.7 → `159b2bc`** `feat(db): seed the verified curriculum and relax the unknown-column constraint`
 > **T9.8 → absorbida por T9.7** (mismo commit `159b2bc`)
-> **T9.3–T9.6 y T9.9–T9.14 abiertas.**
+> **T9.3–T9.6 y T9.9–T9.12 abiertas.**
 
 > **Shas re-derivados 2026-10-08.** Este documento se escribió cuando el force-push estaba en
 > `b3fef41`. Ese SHA **está muerto**: la reescritura de firmas GPG cambió cada SHA del
@@ -516,7 +517,7 @@ Las tres acciones que esta tabla listaba (`subject_units`, `course_groups`,
 | **T9.10** | `/retícula`: semestres corregidos, badge de laboratorio, ramas de seriación | ☐ **abierta** — corregido el tipo de `RetSubject.semester` (`13f4d7a`), pero **la decisión de las 16 materias sin semestre sigue pendiente**. Ver §"Decisión abierta: las 16 materias sin semestre" |
 | **T9.11** | `/horario`: aulas reales | ☐ abierta |
 | **T9.12** | **`/detalle`** primer consumidor real de `subject_units` | ☐ abierta — **desbloqueada el 2026-10-10**: la tabla ya tiene las 32 unidades. Ya no depende de T9.3 |
-| **T9.13** | `/tramites`: regla de los 5 complementarios → Servicio Social | ☐ abierta — **desbloqueada el 2026-10-10**: `complementary_credit_activities` ya existe con 3 filas |
+| **T9.13** | `/tramites`: regla de los 5 complementarios → Servicio Social | ✅ **cerrada 2026-11-25** — la regla está en el código y en las pruebas: `evaluateCreditThresholds` (`src/lib/utils/dag.ts`) abre Servicio Social sólo con **182 reticulares Y 5 complementarios**, el loader de `/tramites` suma el **peso de cada actividad** (no cuenta filas: contar filas era el error de T9.13, y un curso externo sin materia tampoco se contaría) y nombra la puerta que falta. La página muestra el contador —«3 de 5» para el alumno de catálogo, que tiene 3 transversales aprobadas y `ITM-101` sólo inscrita— y dice que las dos puertas van a la vez. Pruebas que la fijan: `tests/unit/protected-loaders.test.ts` (desbloquea en 182+5, mantiene bloqueado en 182 sin complementarios, suma el peso y no las filas, cuenta una actividad externa sin materia, sólo cuenta las del alumno) y `tests/unit/dag.test.ts`. El 2026-11-25 los números de la regla dejaron de estar duplicados en el loader: ahora salen de `dag.ts` (`PLAN_CREDITS_TOTAL`, `SOCIAL_SERVICE_RETICULAR`, `RESIDENCY_RETICULAR`) y la página y el stepper los reciben. |
 | **T9.14** | `/reinscripcion`: filtro por área desaparece (D1), aparece el de laboratorio | ✅ **cerrada 2026-11-18** — el panel trae el control «Laboratorio» (`?lab=1`), la reducción es en SQL y el conteo del panel reporta el conjunto estrechado. El filtro usa **`has_lab`** (el matraz que el SIM marca en la fila), no `is_lab_session`: es el mismo dato que la insignia «Lab» de cada fila, y `is_lab_session` escondería el grupo de teoría emparejado que el alumno también tiene que inscribir |
 
 ## Radio de impacto de las cuatro columnas nullable
@@ -913,6 +914,24 @@ verse, no porque se baje el volumen. Un test cubre cada rama.
 Paginación de la oferta (T9.14), detalle de temario (T9.12), `/horario` (T9.11).
 
 ## Log
+
+- **2026-11-25 — Cerrada.** T9.13 quedó cerrada: la regla de los 5 complementarios está en el
+  código y en las pruebas, y sus números dejaron de estar duplicados.
+  `evaluateCreditThresholds` (`src/lib/utils/dag.ts`) abre Servicio Social sólo con **182
+  reticulares Y 5 complementarios**; el loader de `/tramites` suma el **peso de cada
+  actividad** —contar filas era el error de T9.13, y un curso externo sin materia tampoco se
+  contaría— y nombra la puerta que falta; la página muestra el contador («3 de 5» para el
+  alumno de catálogo, que tiene tres transversales aprobadas e `ITM-101` sólo inscrita) y dice
+  que las dos puertas van a la vez. Las pruebas que la fijan están en
+  `tests/unit/protected-loaders.test.ts` y `tests/unit/dag.test.ts`.
+  El cambio de este día: `/tramites/+page.server.ts` ya no declara `TOTAL_CREDITS = 260` ni
+  `SOCIAL_SERVICE_RETICULAR_REQUIRED = 182` ni los literales 208/260 —los toma de `dag.ts`— y
+  `ProcedureStepper.svelte` recibe `totalCredits` en vez de dividir por un 260 propio. El
+  propio encabezado del loader decía que los números viven en un solo sitio y el archivo los
+  tenía en tres. Sin cambio de comportamiento: las mismas pruebas que fijaban 182/208/260
+  siguen verdes.
+  Verificación: `just check` 0/0, `just qa-fast` verde (421/421 en 29 archivos),
+  `just format-check` verde, `just test-e2e` 237 verdes / 0 rojos.
 
 - **2026-11-18 — Cerrada.** T9.14 quedó cerrada: `/reinscripcion` tiene el filtro de
   laboratorio. El control es un `Select` del panel (`?lab=1`), el loader lo reduce en SQL
