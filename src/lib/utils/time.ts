@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Timezone-aware "today" helpers.
+ * OpenSIGE — Timezone-aware "today" helpers.
  *
  * Cloudflare Workers run in UTC; the Instituto Tecnológico de
  * Morelia is in UTC-6. Between 18:00 and 24:00 local time, the UTC

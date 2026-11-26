@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Enrollment helper unit tests (Phase 4 N6).
+ * OpenSIGE — Enrollment helper unit tests (Phase 4 N6).
  *
  * The helper (`src/lib/server/enrollment.ts`) is the single source
  * of truth for "what is this student currently enrolled in this

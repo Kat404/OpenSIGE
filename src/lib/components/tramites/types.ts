@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Shared types for the Trámites page.
+ * OpenSIGE — Shared types for the Trámites page.
  *
  * The page loader (`/tramites/+page.server.ts`) emits the
  * `ProcedureStatus` shape so the ProcedureStepper component can

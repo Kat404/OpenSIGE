@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Icon component type shared across UI atoms.
+ * OpenSIGE — Icon component type shared across UI atoms.
  *
  * @lucide/svelte exports each icon as a component typed `LucideIcon`
  * (`Component<LucideProps>`). The package ALSO exports a generic

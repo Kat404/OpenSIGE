@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Weekly schedule grid with proportional-height class blocks.
+  OpenSIGE — Weekly schedule grid with proportional-height class blocks.
 
   Layout strategy:
     - 7 day columns (L M M J V S D — Spanish single-letter headers).

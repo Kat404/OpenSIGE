@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Drizzle ORM client factory.
+ * OpenSIGE — Drizzle ORM client factory.
  *
  * Single source of truth for constructing a typed Drizzle client bound
  * to the worker's D1 binding. Every server-side module (auth.ts,

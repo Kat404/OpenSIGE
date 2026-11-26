@@ -1,5 +1,5 @@
 <!--
-	OpenSIM — Dev-only fixture rendering all 80 avatar cells required by
+	OpenSIGE — Dev-only fixture rendering all 80 avatar cells required by
 	the Phase 6.1 overlap Playwright suite (5 sizes × 2 shapes × 4 statuses).
 
 	Each cell receives a `data-testid` HTML attribute (via the spread

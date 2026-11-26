@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Contract of the shared syllabus parser (T9.12, S3).
+ * OpenSIGE — Contract of the shared syllabus parser (T9.12, S3).
  *
  * The contract in one sentence: a column that cannot be read must not
  * take a page down. This file pins the EDGE of that contract with

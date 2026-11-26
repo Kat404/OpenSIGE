@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the dashboard's cards must contain their own buttons.
+ * OpenSIGE — the dashboard's cards must contain their own buttons.
  *
  * Two defects, one cause. The "Seguridad" card holds a button labelled
  * "Cerrar sesión en todos los dispositivos", and that button used to

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the "Carga actual" grid names the subject of every block.
+ * OpenSIGE — the "Carga actual" grid names the subject of every block.
  *
  * The grid used to show a dash where the subject belongs: the loader
  * returned the schedule blocks without their subject, and the simulator
@@ -20,7 +20,7 @@ if (process.env.OPENSIM_TEST_PASSWORD === undefined && existsSync(".env")) {
 }
 
 const CONTROL_NUMBER = "12345678";
-const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensim-dev-2026";
+const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensige-dev-2026";
 
 test.describe("reinscripcion — the Carga actual grid", () => {
 	// No shared session: this spec signs in as the student with blocks.

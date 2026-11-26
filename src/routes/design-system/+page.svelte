@@ -52,17 +52,17 @@ function notify() {
 </script>
 
 <svelte:head>
-	<title>Inventario de componentes — OpenSIM</title>
+	<title>Inventario de componentes — OpenSIGE</title>
 	<meta
 		name="description"
-		content="Verificación visual de los átomos de UI de OpenSIM: botones, entradas, estados, organización, tarjetas y atajos."
+		content="Verificación visual de los átomos de UI de OpenSIGE: botones, entradas, estados, organización, tarjetas y atajos."
 	>
 </svelte:head>
 
 <main class="page">
 	<header class="page__header">
 		<p class="page__back"><a href="/">← Volver a la portada</a></p>
-		<h1>OpenSIM — Inventario de componentes UI</h1>
+		<h1>OpenSIGE — Inventario de componentes UI</h1>
 		<p class="page__sub">Verificación visual de los 17 átomos. WCAG 2.1 AA sobre tokens.</p>
 	</header>
 

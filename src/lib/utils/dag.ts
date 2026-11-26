@@ -1,5 +1,5 @@
 /**
- * OpenSIM — DAG traversal helpers.
+ * OpenSIGE — DAG traversal helpers.
  *
  * Pure, side-effect-free functions over an array of directed edges.
  * Used by the curriculum retícula (Phase 3 Tarea 3.4) to compute the

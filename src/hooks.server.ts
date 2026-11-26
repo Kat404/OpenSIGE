@@ -1,8 +1,8 @@
 /**
- * OpenSIM — SvelteKit hooks (handle).
+ * OpenSIGE — SvelteKit hooks (handle).
  *
  * Per-request middleware that:
- *   1. Reads the `opensim_session` cookie (if any) and validates it
+ *   1. Reads the `opensige_session` cookie (if any) and validates it
  *      against the D1 sessions table.
  *   2. Populates `event.locals.user` with the student profile (or
  *      `null` if no valid session).
@@ -41,7 +41,7 @@ const SECURITY_HEADERS: Readonly<Record<string, string>> = Object.freeze({
 import type { Handle } from "@sveltejs/kit/hooks";
 // `cloudflare:workers` is a URI-style specifier that the adapter's
 // Vite plugin resolves at runtime. tsc can't resolve it as a regular
-// module, so we cast through the locally-declared `OpenSimWorkerEnv`
+// module, so we cast through the locally-declared `OpenSigeWorkerEnv`
 // interface (see src/cloudflare-workers.d.ts).
 import { env as workerEnv } from "cloudflare:workers";
 
@@ -55,9 +55,9 @@ import {
 } from "#lib/server/auth";
 import { getDb } from "#lib/server/db";
 
-import type { OpenSimWorkerEnv } from "./cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "./cloudflare-workers";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// Default to unauthenticated; the (protected) layout's load

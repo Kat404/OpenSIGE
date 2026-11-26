@@ -1,5 +1,5 @@
 /**
- * OpenSIM — /reinscripcion laboratory filter (T9.14).
+ * OpenSIGE — /reinscripcion laboratory filter (T9.14).
  *
  * The SIM marks an offering row with a flask when the group carries a
  * laboratory (`course_groups.has_lab`), and the filter narrows the offer to

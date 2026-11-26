@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Stateful parent for the Reinscripción simulator.
+  OpenSIGE — Stateful parent for the Reinscripción simulator.
 
   The page (`/reinscripcion`) ships ONE PAGE of the catalog (groups +
   blocks + the student's already-enrolled set) plus the totals for the

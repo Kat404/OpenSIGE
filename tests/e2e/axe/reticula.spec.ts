@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /reticula (Phase 5 Tarea 5.1.3).
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /reticula (Phase 5 Tarea 5.1.3).
  *
  * Three tests: the bare route, the Cmd+K deep-link variant (URL hash),
  * since the round-6 audit (M6) flagged the deep-link path as a separate

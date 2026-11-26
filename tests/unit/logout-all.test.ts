@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Bulk session revocation endpoint unit tests.
+ * OpenSIGE — Bulk session revocation endpoint unit tests.
  *
  * `POST /login/logout-all` is the path that revokes EVERY session of
  * the signed-in student, not just the one presented by the browser.

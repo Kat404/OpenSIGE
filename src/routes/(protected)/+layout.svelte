@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — (protected) layout host.
+  OpenSIGE — (protected) layout host.
 
   The auth gate itself lives in `+layout.server.ts` (it throws a 303
   redirect to /login when `locals.user` is null). Here we render the
@@ -30,7 +30,7 @@ const paletteRoutes: PaletteRoute[] = [
 </script>
 
 <svelte:head>
-	<title>OpenSIM</title>
+	<title>OpenSIGE</title>
 </svelte:head>
 
 {#if data.user}

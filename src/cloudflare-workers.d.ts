@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Type shim for the `cloudflare:workers` virtual module.
+ * OpenSIGE — Type shim for the `cloudflare:workers` virtual module.
  *
  * In SvelteKit 3 + @sveltejs/adapter-cloudflare 8, the worker's env
  * bindings (D1, KV, R2, env vars, etc.) are accessed via
@@ -21,13 +21,13 @@
  * hooks.server.ts and +page.server.ts.
  */
 
-export interface OpenSimWorkerEnv {
+export interface OpenSigeWorkerEnv {
 	DB: D1Database;
 	ASSETS: Fetcher;
 }
 
 declare module "cloudflare:workers" {
-	export const env: OpenSimWorkerEnv;
+	export const env: OpenSigeWorkerEnv;
 	export const caches: CacheStorage;
 	export const ctx: ExecutionContext;
 	export const cf: IncomingRequestCfProperties | undefined;

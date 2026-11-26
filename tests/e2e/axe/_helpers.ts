@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core scan helper (Phase 5 Tarea 5.1.3).
+ * OpenSIGE — axe-core scan helper (Phase 5 Tarea 5.1.3).
  *
  * Runs a WCAG 2.1 AA scan on the current page using
  * `@axe-core/playwright`. Fails the test when any `serious` or

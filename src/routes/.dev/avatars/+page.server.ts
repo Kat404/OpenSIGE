@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Dev-only fixture gate for the avatar overlap Playwright suite
+ * OpenSIGE — Dev-only fixture gate for the avatar overlap Playwright suite
  * (Phase 6.1 / U3 acceptance criteria AC6–AC11).
  *
  * SvelteKit evaluates `dev` at build time and the `!dev` branch is

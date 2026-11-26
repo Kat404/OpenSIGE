@@ -1,4 +1,4 @@
-# OpenSIM — Deploy a Cloudflare Workers (Phase 5 Tarea 5.2)
+# OpenSIGE — Deploy a Cloudflare Workers (Phase 5 Tarea 5.2)
 
 Fecha: 2026-10-03
 Target: Cloudflare Workers (no Pages) con D1 binding + assets estáticos.
@@ -154,7 +154,7 @@ curl -s -o /dev/null -w "%{http_code}\n" "$URL/__nope__"
 # esperado: 404
 ```
 
-Los pasos 1-4 son smoke **sin** credenciales. Para validar el flujo autenticado, hace falta provisionar un estudiante real vía flujo de Rectoría (fuera del scope de OpenSIM dev). La auditoría WCAG 5.1 contra el deploy se hace corriendo `pnpm exec playwright test` con `BASE_URL` apuntando a la URL de prod.
+Los pasos 1-4 son smoke **sin** credenciales. Para validar el flujo autenticado, hace falta provisionar un estudiante real vía flujo de Rectoría (fuera del scope de OpenSIGE dev). La auditoría WCAG 5.1 contra el deploy se hace corriendo `pnpm exec playwright test` con `BASE_URL` apuntando a la URL de prod.
 
 ## Migrar a un dominio custom (post-MVP)
 

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Auth library unit tests.
+ * OpenSIGE — Auth library unit tests.
  *
  * Covers the pure (non-D1) surface of src/lib/server/auth.ts:
  *   - hashPassword: determinism, base64url output shape, salt uniqueness

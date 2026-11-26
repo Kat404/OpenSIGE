@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Trámites page loader (Phase 4 Tarea 4.2; T9.13).
+ * OpenSIGE — Trámites page loader (Phase 4 Tarea 4.2; T9.13).
  *
  * Computes the unlock state of the three academic procedures:
  *   - Servicio Social       (>= 182 reticular CR + >= 5 complementary CR)
@@ -45,10 +45,10 @@ import {
 import { formString } from "#lib/utils/form";
 import { PROCEDURE_UNAVAILABLE_NOTICE } from "#lib/utils/procedure-labels";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 const SOCIAL_SERVICE_CANONICAL_ID = "servicio-social";
 
@@ -267,7 +267,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	/**
 	 * Form action for Phase 4. The persistence is a Phase 5+ concern:
-	 * OpenSIM stores no procedure request, so this action refuses
+	 * OpenSIGE stores no procedure request, so this action refuses
 	 * instead of accepting data it would drop. The forms are disabled
 	 * on screen for the same reason — this is the server-side half of
 	 * that contract, for a request that arrives without the UI.

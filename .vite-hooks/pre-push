@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# OpenSIM — the local gate before anything leaves this machine.
+# OpenSIGE — the local gate before anything leaves this machine.
 #
 # Why this exists: the Cloudflare Workers Builds integration builds AND
 # deploys on every merge to `main` (the PR #11 merge was live 41

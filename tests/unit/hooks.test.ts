@@ -1,5 +1,5 @@
 /**
- * OpenSIM — `hooks.server.ts` handle() unit tests (Phase 11 T11.1).
+ * OpenSIGE — `hooks.server.ts` handle() unit tests (Phase 11 T11.1).
  *
  * `handle` is the one piece of middleware every request in the app
  * passes through, and until now nothing tested it. Its contract:

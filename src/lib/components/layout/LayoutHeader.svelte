@@ -1,8 +1,8 @@
 <!--
-  OpenSIM — Header strip for the (protected) layout.
+  OpenSIGE — Header strip for the (protected) layout.
 
   Renders:
-    - OpenSIM brand mark
+    - OpenSIGE brand mark
     - Cmd+K palette trigger (button + keyboard badge)
     - Theme toggle (persists choice on <html data-theme>)
     - User chip (avatar with initials + control number + full name)
@@ -73,7 +73,7 @@ onMount(() => {
 <header class="header">
 	<a class="header__brand" href="/dashboard">
 		<span class="header__brand-mark" aria-hidden="true">▣</span>
-		<span class="header__brand-text">OpenSIM</span>
+		<span class="header__brand-text">OpenSIGE</span>
 	</a>
 
 	<button

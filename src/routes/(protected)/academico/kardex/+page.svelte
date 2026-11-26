@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Kardex académico page.
+  OpenSIGE — Kardex académico page.
 
   Hosts the KardexTable component with a Spanish header.
 -->
@@ -11,8 +11,8 @@ let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
-	<title>Kardex — OpenSIM</title>
-	<meta name="description" content="Historial académico unificado del estudiante OpenSIM.">
+	<title>Kardex — OpenSIGE</title>
+	<meta name="description" content="Historial académico unificado del estudiante OpenSIGE.">
 </svelte:head>
 
 <section class="kardex-page">

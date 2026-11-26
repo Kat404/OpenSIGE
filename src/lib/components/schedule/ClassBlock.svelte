@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Single class block inside the weekly schedule grid.
+  OpenSIGE — Single class block inside the weekly schedule grid.
 
   Positioned absolutely inside the day column; height is proportional
   to the time difference between `block.startTime` and `block.endTime`

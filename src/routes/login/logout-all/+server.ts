@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Revoke-all-sessions endpoint.
+ * OpenSIGE — Revoke-all-sessions endpoint.
  *
  * POST /login/logout-all
  *   1. Requires a signed-in student (`locals.user`, populated by
@@ -28,9 +28,9 @@ import {
 } from "#lib/server/auth";
 import { getDb } from "#lib/server/db";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const POST: RequestHandler = async ({ cookies, locals }) => {
 	// No student, no revocation. `hooks.server.ts` sets `locals.user`

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Avatar a11y & status-label unit tests.
+ * OpenSIGE — Avatar a11y & status-label unit tests.
  *
  * Contracts under test (U3 Phase A, see odd/tasks/phase-6-ui-polish.md):
  *   1. STATUS_LABEL_ES maps each AvatarStatus to its Spanish label and back.

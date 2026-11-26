@@ -2,8 +2,12 @@
 
 ## Contexto
 
-Repositorio todo-en-uno **OpenSIM**: rediseño FOSS del SIM del Instituto Tecnológico de
-Morelia, construido como demo funcional. No es una réplica ni un espejo de datos: la
+Repositorio todo-en-uno **OpenSIGE**: sistema integral de gestión educativa (FOSS). Empezó
+como rediseño del SIM del Instituto Tecnológico de
+Morelia y el 2026-11-25 pasó a ser un sistema propio: el SIM es **una fuente de datos
+verificados**, no el producto; las reglas, los roles y los trámites son de OpenSIGE. Los
+principios están en `odd/manifesto.md` y el plan por fases en `odd/tasks/open-sige.md`.
+No es una réplica ni un espejo de datos: la
 institución publica parte de su información académica y ninguna de su planificación, así
 que una copia fiel es imposible por construcción. Un solo mantenedor; los agentes no deben
 adivinar el tooling.
@@ -88,7 +92,7 @@ dos push URLs — uno por remoto; sin ellos la publicación se queda en GitHub).
 Piden autorización en los mismos términos. El resto de las recetas es local — pero la lista
 real es `just --list`, no esta frase.
 
-El D1 que hay en producción es de pruebas/demo, para que alguien pueda ver OpenSIM
+El D1 que hay en producción es de pruebas/demo, para que alguien pueda ver OpenSIGE
 funcionando sin instalarlo; no está diseñado para crecer. Esa es también la razón
 de la prohibición: un `db-seed-remote` equivocado no se nota hasta que el demo
 público ya no arranca.

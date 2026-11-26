@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Reinscripción loader / action tests.
+ * OpenSIGE — Reinscripción loader / action tests.
  *
  * Three regressions this file exists to pin, all of them found the same
  * way: the page 500'd in production and the cause turned out to be a query

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Shared harness for the request-layer unit tests (Phase 11).
+ * OpenSIGE — Shared harness for the request-layer unit tests (Phase 11).
  *
  * Two problems every `+server.ts` / `+page.server.ts` test has to solve,
  * solved once here:

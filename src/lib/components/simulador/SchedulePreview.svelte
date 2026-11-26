@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Schedule preview for the Reinscripción simulator.
+  OpenSIGE — Schedule preview for the Reinscripción simulator.
 
   A simplified time-grid that renders the student's *current*
   (already-enrolled) classes plus the *candidate* classes the user

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Procedure unlock-state labels.
+ * OpenSIGE — Procedure unlock-state labels.
  *
  * Single source of truth for the two procedure unlock states
  * (Disponible / Bloqueado) used by `ProcedureStepper` and the four
@@ -23,9 +23,9 @@ export type ProcedureState = keyof typeof PROCEDURE_STATE_LABEL;
  * Why the three procedure forms are disabled, and what happens to
  * what a student types in them.
  *
- * OpenSIM does not store procedure requests yet: the action reads the
+ * OpenSIGE does not store procedure requests yet: the action reads the
  * FormData and discards it. Saying so on screen — before the student
  * fills ten fields for nothing — is the whole point of the constant.
  */
 export const PROCEDURE_UNAVAILABLE_NOTICE =
-	"OpenSIM todavía no guarda solicitudes de trámite. Por eso el formulario está deshabilitado: lo que escribieras aquí se perdería.";
+	"OpenSIGE todavía no guarda solicitudes de trámite. Por eso el formulario está deshabilitado: lo que escribieras aquí se perdería.";

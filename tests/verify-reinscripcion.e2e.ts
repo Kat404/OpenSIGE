@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the protected route that used to 500.
+ * OpenSIGE — the protected route that used to 500.
  *
  * T9.4 loaded the 468-row offering catalogue into `course_groups` and the
  * loader passed all 475 group ids to one `inArray`, past D1's

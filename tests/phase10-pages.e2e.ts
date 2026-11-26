@@ -1,5 +1,5 @@
 /**
- * OpenSIM — e2e agentic coverage for the pages that had none.
+ * OpenSIGE — e2e agentic coverage for the pages that had none.
  *
  * Phase 10, S7. The agentic runner is the most expensive QA layer in the
  * project — a real browser against a real model gateway — and until this file

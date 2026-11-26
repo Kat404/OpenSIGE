@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Deterministic HSL color hash (theme-aware).
+ * OpenSIGE — Deterministic HSL color hash (theme-aware).
  *
  * Maps a subject code (e.g. "ACF-0901", "SCD-1020") to a stable
  * `hsl(h, 60%, L%)` color string. The same input always produces the

@@ -4,12 +4,12 @@
 # Builds a glibc-based image (Playwright rejects musl/Alpine
 # per https://playwright.dev/docs/docker). Mirrors the pattern
 # from TallerAgentes' Containerfile.ci but with Chromium
-# installed via apt-get because OpenSIM's e2e suite needs a
+# installed via apt-get because OpenSIGE's e2e suite needs a
 # real browser binary that Playwright supports.
 
 FROM node:24-bookworm-slim
 
-LABEL org.opencontainers.image.title="opensim-ci"
+LABEL org.opencontainers.image.title="opensige-ci"
 LABEL org.opencontainers.image.description="Reproducible CI gate for opensim (Bookworm + Node 24 + pnpm + just + Chromium)"
 LABEL org.opencontainers.image.source="https://github.com/Kat404/OpenSIM"
 LABEL org.opencontainers.image.licenses="Unlicense"
@@ -77,7 +77,7 @@ ENV CI=true
 ENV PLAYWRIGHT_CHROMIUM_PATH=/usr/bin/chromium
 
 # Default command: run the in-container QA gate.
-# The host's `just ci` recipe calls `podman run ... opensim-ci:latest`
+# The host's `just ci` recipe calls `podman run ... opensige-ci:latest`
 # (no command override), so this CMD is what runs by default.
 # For an interactive shell, use `just ci-shell` which overrides
 # with `bash`.

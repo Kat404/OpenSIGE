@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Playwright auth setup (Phase 5 Tarea 5.1.2).
+ * OpenSIGE — Playwright auth setup (Phase 5 Tarea 5.1.2).
  *
  * Logs in once with the dev student credential and writes the session
  * cookies to `playwright/.auth/storage.json` so every protected spec
@@ -11,9 +11,9 @@
  * (that is what `just test-e2e` does for you, non-destructively; use
  * `just test-e2e-fresh` only when the local database must be rebuilt)
  *
- * Default dev credential per the OpenSIM spec §3 / §7:
+ * Default dev credential per the OpenSIGE spec §3 / §7:
  *   controlNumber: 12345678
- *   password:      opensim-dev-2026
+ *   password:      opensige-dev-2026
  *
  * The seeder (src/lib/server/db/seed-password.ts) resolves the credential as
  * positional arg → OPENSIM_TEST_* env → default. This mirrors that chain
@@ -47,7 +47,7 @@ const AUTH_FILE = "playwright/.auth/storage.json";
 // Defaulting to the old shared key made every test-e2e run fail auth with
 // a 15 s waitForURL timeout.
 const CONTROL_NUMBER = process.env.OPENSIM_TEST_CONTROL_NUMBER ?? "99999999";
-const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensim-dev-2026";
+const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensige-dev-2026";
 
 setup(`authenticate as test student ${CONTROL_NUMBER}`, async ({ page }) => {
 	await page.goto("/login");

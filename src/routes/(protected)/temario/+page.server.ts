@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Temario loader (T9.12).
+ * OpenSIGE — Temario loader (T9.12).
  *
  * The first real consumer of `subject_units`. The table is written by the
  * seed from `/calificaciones-curso`, the ONLY source that publishes a
@@ -25,10 +25,10 @@ import { getDb } from "#lib/server/db";
 import { subjects, subjectUnits } from "#lib/server/db/schema";
 import { parseUnit, type Unit } from "#lib/utils/temario";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 interface SubjectWithTemario {
 	canonicalId: string;

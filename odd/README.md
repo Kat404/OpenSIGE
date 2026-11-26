@@ -1,4 +1,4 @@
-# `odd/` — OpenSIM Project Bookkeeping Index
+# `odd/` — OpenSIGE Project Bookkeeping Index
 
 <!-- odd-tracker
 kind: index
@@ -8,11 +8,22 @@ reconciled-against: main@4a21a52 (PR #12 fusionada) — delivery state; the phas
 sha-warning: los SHA ffcd595, 8f40837, 6ca7c12 y b3fef41 citados en el cuerpo de este archivo predicen la reescritura de firmas GPG del 2026-10-08 y están MUERTOS; los SHA vivos verificados con `git cat-file -e` son 18de1a5, b6a1d8a, 159b2bc, 2ac464f, fee9d60, 13f4d7a, 4460f27, 17e013b, db258a8, a799d47, a3621f7, c22d05c, 639a663 y c49caea
 -->
 
-OpenSIM (Open Source — Sistema Integral Modular) reached **Phase 7 complete**. The build,
+OpenSIGE (Open Source — Sistema Integral Modular) reached **Phase 7 complete**. The build,
 the WCAG audit, the U1–U4 polish cycle and the hardening cycle are all closed and recorded
 with commit SHAs. **Phase 9 (curriculum data foundation) is the active phase: T9.1–T9.9 are
 closed and T9.10–T9.12 are open.** Production D1 is at migration **`0017`** (verified
 2026-10-19). This file is the index; `tasks/opensim.md` is the canonical spec.
+
+> **Reconciled 2026-11-26 — el giro a OpenSIGE.** El proyecto deja de ser un portal del alumno
+> y pasa a ser un **SIGE de la institución** cuyo usuario primario es el **personal**: el
+> expediente es el producto, su estado (el semáforo) es lo que se ve, las reglas son de la
+> institución, todo dato lleva procedencia y todo acto deja rastro append-only. El nombre es
+> **OpenSIGE** (el repo en GitHub conserva `OpenSIGE` hasta el final para no romper enlaces);
+> el Worker y la base D1 conservan `opensim` porque renombrarlos es una operación de
+> producción con su propio corte, no un efecto secundario de un rename. Los principios están
+> en **`manifesto.md`** y el plan por fases (F0 cimiento → F4 la distro) en
+> **`tasks/open-sige.md`**. PR **#14** (stack a `latest` + adapter-cloudflare 9) y **#15**
+> (T9.13: la regla de los 5 complementarios lee una sola definición) están **fusionados**.
 
 > **Reconciled 2026-11-25 — toolchain.** Todo el stack está en el `latest` de npm: **SvelteKit
 > 3.4.1**, **adapter-cloudflare 9.0.1** (mayor), **Svelte 5.59.2**, Vite+ `vp` 1.8.0
@@ -80,8 +91,8 @@ closed and T9.10–T9.12 are open.** Production D1 is at migration **`0017`** (v
 | --- | --- |
 | **What is done?** | Phases 1, 2, 3, 4.0, 4, 5, 6, 6.1, 6.2, 6.5, 7, 8 (a11y dark-theme contrast), and in Phase 9: **T9.1–T9.9**. T9.5 shipped inside T9.7; T9.8 shipped inside T9.7 too, as a rebuild. |
 | **What is open?** | **Delivery, not development.** The 14 live findings are closed and verified; PR #8, #9 and #11 are merged and the Worker is deployed with all of them. What is open is the four `ponytail:` shortcuts (findings 16–19, awaiting a maintainer owner) and B4 (PII in the refs of a dead PR, which depends on GitHub Support, not on the plan). Phase 9 T9.10–T9.12 remain open but unblocked. |
-| **What is next?** | **The four `ponytail:` shortcuts** — they need an owner and a horizon, not a fix (see `tasks/delivery-handoff-2026-10-19.md` §Pendiente 3). Then the open Phase 9 tasks: T9.10 (the 16 subjects with no semester — an operator decision) and T9.11 (real classrooms). T9.14 (the laboratory filter) closed on 2026-11-18 and T9.13 (the complementary-credits rule → Servicio Social) closed on 2026-11-25: the rule was already in the code, and this pass closed the row and removed the duplicated rule numbers from the loader. The per-subject page (`/detalle`) is on `tasks/detalle-materia.md`. |
-| **Pushed?** | **`main` is on both remotes; PRs #14 and #15 are open.** `main` = `46d3824` (PR #8, #9, #11, #12 and #13 merged) and `git ls-remote` confirms `origin` and `codeberg` point at the same commit. Two branches are in flight, published to GitHub **and** Codeberg: **`chore/deps-at-latest`** (PR #14 — the whole stack at npm `latest`, on adapter-cloudflare 9, with pnpm pinned to 12.23.0) and **`feat/tramites-regla-unica`** (PR #15 — T9.13's rule reads one definition). `just push-mirror` publishes to both **because `origin` carries two push URLs** (`git@github.com:Kat404/OpenSIM.git` and `ssh://git@codeberg.org/Kat404/OpenSIM.git`); a clone without them publishes only to GitHub, and the recipe says so. |
+| **What is next?** | **The pivot to OpenSIGE** (`manifesto.md` + `tasks/open-sige.md`): the project stops being a student portal and becomes an institutional SIGE whose primary user is the **staff**. Phases: F0 (cimentación: perfil de institución, roles→ámbitos→capacidades, núcleo de expediente, suite de conformidad) → F1 (reinscripción de punta a punta) → F2 (carga y horarios) → F3 (catálogo editable y versionado) → F4 (la distro). F0 arranca con el rebrand del código. Antes de eso, los cuatro atajos `ponytail:` siguen esperando dueño (`tasks/delivery-handoff-2026-10-19.md` §Pendiente 3), y las filas de Phase 9 que siguen abiertas (T9.10, T9.11) ya las tiene el código. |
+| **Pushed?** | **`main` is on both remotes; PRs #14 and #15 are merged.** `main` = `ca39d67` (PR #8, #9, #11, #12, #13, **#14** and **#15** merged) and `git ls-remote` confirms `origin` and `codeberg` point at the same commit. #14 was the whole stack at npm `latest`, on adapter-cloudflare 9, with pnpm pinned to 12.23.0; #15 closed T9.13 (the complementary-credits rule reads one definition). The branch in flight is **`chore/rebrand-opensige`** (the code rebrand to OpenSIGE). `just push-mirror` publishes to both **because `origin` carries two push URLs** (`git@github.com:Kat404/OpenSIM.git` and `ssh://git@codeberg.org/Kat404/OpenSIM.git`); a clone without them publishes only to GitHub, and the recipe says so. |
 | **Signed?** | **Yes — everything.** 126/126 `G` on `main`, 143/143 `G` on the local feature branch at the last measurement, GPG key `3335F4A0D9DBBA95`. Verified with `git log <ref> --format='%G?' \| sort \| uniq -c`. Treat the branch figure as a lower bound: the branch was still advancing while this file was written. Every SHA changed in the 2026-10-08 rewrite, so older SHAs cited anywhere in `odd/` are dead. |
 | **Production data?** | **Migration `0017` applied** (verified 2026-10-19, after the `0015`–`0017` run): 68 subjects, 32 `subject_units`, 475 course groups, 49 `student_progress` rows, 3 complementary activities (3 credits), and `subject_aliases` dropped by `0017` — no rows lost. The remote `student_credentials` holds **only `99999999`** (the placeholder, zero progress rows); `12345678` — the student that owns the 49 progress rows — has **no remote credential**. The remote credential's password is `OPENSIM_TEST_PASSWORD` from the local `.env`, **not** the `opensim-dev-2026` the README documents (verified by recomputing PBKDF2 against the stored hash). The Worker was deployed on 2026-10-28 (18:53:47Z, 41 s after the merge) with a build that includes PR #8, #9 and **#11** (`/perfil`, the week widget, the page transition and the subject names in the schedule grid are live). The demo's credential is now `12345678`, whose identity in the remote D1 is the synthetic one since `5e2e936`. |
 | **Green?** | Re-measured 2026-11-25 after the stack-at-latest upgrade: **415/415** unit tests in 28 files (`vp test`), `just vp-check` **0 errors** / 5 warnings in 174 files, `just check` (svelte-check) 0/0, `just build` ✓ (the `scheduled` patch still applies, now on the adapter-9 worker path), `just test-e2e` **237 passed, 0 failed**, 160 skipped (the avatar-overlap suite, which by design runs only in its own project; `just test-e2e-avatar` **81 passed, 0 failed**), `pnpm exec wrangler deploy --dry-run` ✓ (84 modules, 64 asset files). Gotcha of this host: `playwright.config.ts` pins the system Chromium at `/usr/bin/chromium`, and **Arch no tiene el paquete `chromium` instalado** — las dos suites corrieron contra el Chromium que trae Playwright (`~/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome`) y la config se restauró después. The same numbers now run on every `git push`: the repo ships a versioned pre-push hook (`.vite-hooks/pre-push`) that runs `just qa-fast`. |
@@ -256,6 +267,8 @@ catch the 8 Gemini R20 issues — cross-model review is what surfaced them.
 | File | Role | Status |
 | --- | --- | --- |
 | `README.md` | This index | Current |
+| `manifesto.md` | **OpenSIGE's public manifesto** — who we serve, the five non-negotiable principles, what we are and are not | **v1 (2026-11-25)** — the 12 manifesto answers and the three amendments (rules belong to the institution, every datum has provenance, we are a platform not a data vendor) were approved by the maintainer |
+| `tasks/open-sige.md` | **OpenSIGE's phase plan** — the pivot from student portal to institutional SIGE: data pipeline, institution-owned rules, kernel/distro architecture, F0-F4 | **Active (2026-11-25)** — F0 waits for PRs #14 and #15 to land |
 | `tasks/opensim.md` | **Canonical spec v2.2** — §8 is the source of truth per task | Current |
 | `audit.md` | Pre-implementation audit (2026-10-01). AG-1…AG-22, CF-1…CF-5. | **Superseded** — banner added, findings preserved verbatim |
 | `cf-3-auth-comparison.md` | 4-option auth analysis | **Superseded/closed** — shipped as native single-file, Resend leg dropped |

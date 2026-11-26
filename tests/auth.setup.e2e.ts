@@ -1,5 +1,5 @@
 /**
- * OpenSIM — e2e sign-in setup.
+ * OpenSIGE — e2e sign-in setup.
  *
  * Runs once per run and saves the authenticated state under a named session,
  * so `e2e explore --session alumno` and any test that takes `{ session:

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Auth gate + palette index for the (protected) route group.
+ * OpenSIGE — Auth gate + palette index for the (protected) route group.
  *
  * Every route under `src/routes/(protected)/` inherits this load
  * function. If `event.locals.user` is `null` (set in hooks.server.ts
@@ -29,10 +29,10 @@ import { asc } from "drizzle-orm";
 import { getDb } from "#lib/server/db";
 import { subjects } from "#lib/server/db/schema";
 
-import type { OpenSimWorkerEnv } from "../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../cloudflare-workers";
 import type { LayoutServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const load: LayoutServerLoad = async ({ locals, url }) => {
 	if (!locals.user) {

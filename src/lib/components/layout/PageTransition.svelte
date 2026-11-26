@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Animated page transition for the protected layout.
+  OpenSIGE — Animated page transition for the protected layout.
 
   Wraps the page content in its own view-transition group so the content
   fades and rises between routes while the chrome (sidebar + header)

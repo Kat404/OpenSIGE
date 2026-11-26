@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the Kardex grade column holds grades, not states.
+ * OpenSIGE — the Kardex grade column holds grades, not states.
  *
  * Found by the agentic lane on 2026-10-19, and pinned here because the
  * deterministic gate is where a regression belongs: the grade column used
@@ -26,7 +26,7 @@ if (process.env.OPENSIM_TEST_PASSWORD === undefined && existsSync(".env")) {
 }
 
 const CONTROL_NUMBER = "12345678";
-const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensim-dev-2026";
+const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensige-dev-2026";
 
 test.describe("kardex — the catalogue student", () => {
 	// No shared session: this spec signs in as the student with a record.

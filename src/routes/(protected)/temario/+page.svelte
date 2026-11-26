@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Temario por materia (T9.12).
+  OpenSIGE — Temario por materia (T9.12).
 
   The first consumer of `subject_units`. Operator decision, 2026-10-13:
   explicit coverage. The page states how many of the plan's subjects have a
@@ -34,7 +34,7 @@ const subtopicCount = $derived(
 </script>
 
 <svelte:head>
-	<title>Temario — OpenSIM</title>
+	<title>Temario — OpenSIGE</title>
 	<meta name="description" content="Temario publicado por el portal, materia por materia.">
 </svelte:head>
 

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Carga Académica PDF export endpoint unit tests (Phase 11 T11.4).
+ * OpenSIGE — Carga Académica PDF export endpoint unit tests (Phase 11 T11.4).
  *
  * `POST /api/export/carga` is the one endpoint under `(protected)`-free
  * routing that a browser can reach directly, so the (protected) layout's
@@ -157,7 +157,7 @@ describe("POST /api/export/carga — content contract", () => {
 		const { PDFDocument } = await import("pdf-lib");
 		const doc = await PDFDocument.load(await response.arrayBuffer());
 
-		expect(doc.getTitle()).toBe("Carga Académica — OpenSIM");
+		expect(doc.getTitle()).toBe("Carga Académica — OpenSIGE");
 		expect(doc.getAuthor()).toBe("TecNM Morelia");
 		expect(doc.getSubject()).toBe(`Carga académica del periodo ${PERIOD}`);
 		expect(doc.getPageCount()).toBe(1);

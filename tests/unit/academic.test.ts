@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Academic constants and helpers unit tests.
+ * OpenSIGE — Academic constants and helpers unit tests.
  *
  * The constants here are the single source of truth for the TecNM
  * 0-10 grade scale; the test pins the value so a typo cannot

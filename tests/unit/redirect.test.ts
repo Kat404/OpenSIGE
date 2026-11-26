@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Internal redirect validation tests.
+ * OpenSIGE — Internal redirect validation tests.
  *
  * Covers the open-redirect class of bugs in safeInternalRedirect:
  *   - protocol-relative URLs (`//evil.com`)

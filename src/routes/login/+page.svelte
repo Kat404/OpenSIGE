@@ -46,7 +46,7 @@ function toggleTheme() {
 </script>
 
 <svelte:head>
-	<title>Iniciar sesión — OpenSIM</title>
+	<title>Iniciar sesión — OpenSIGE</title>
 	<meta name="description" content="Acceso al Sistema Integral Modular de TecNM Morelia.">
 </svelte:head>
 

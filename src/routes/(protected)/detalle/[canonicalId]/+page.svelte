@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Detalle de una materia (T9.12).
+  OpenSIGE — Detalle de una materia (T9.12).
 
   One subject of the plan, with the facts the catalogue holds about it
   and the syllabus the portal published for it.
@@ -65,7 +65,7 @@ function hoursText(ht: number | null, hp: number | null): string {
 </script>
 
 <svelte:head>
-	<title>{subject ? `${subject.code} — ${subject.name} — OpenSIM` : "Detalle de materia — OpenSIM"}</title>
+	<title>{subject ? `${subject.code} — ${subject.name} — OpenSIGE` : "Detalle de materia — OpenSIGE"}</title>
 	<meta
 		name="description"
 		content={subject

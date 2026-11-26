@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Root error boundary.
+  OpenSIGE — Root error boundary.
 
   SvelteKit renders this when a load function throws or the user lands
   on a 404. Themed in the same surface tokens as the rest of the app
@@ -20,7 +20,7 @@ const isNotFound = $derived(status === 404);
 </script>
 
 <svelte:head>
-	<title>{status} — OpenSIM</title>
+	<title>{status} — OpenSIGE</title>
 	<meta name="robots" content="noindex">
 </svelte:head>
 

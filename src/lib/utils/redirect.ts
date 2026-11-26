@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Internal redirect validation.
+ * OpenSIGE — Internal redirect validation.
  *
  * `safeInternalRedirect` is the only function callers should use to
  * turn a user-supplied `redirectTo` (form input, query string, or any

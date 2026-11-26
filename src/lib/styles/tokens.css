@@ -1,5 +1,5 @@
 /*
- * OpenSIM — Design Tokens (CSS Custom Properties)
+ * OpenSIGE — Design Tokens (CSS Custom Properties)
  *
  * Authoritative source for color, typography, spacing, radius, and shadow
  * tokens. All Svelte components MUST consume these via var(--token-name);
@@ -308,7 +308,7 @@
    are document-level because the ::view-transition-* pseudo-elements live
    on the root element and cannot be scoped to a component. */
 
-@keyframes opensim-content-out {
+@keyframes opensige-content-out {
 	from {
 		opacity: 1;
 		transform: translateY(0);
@@ -320,7 +320,7 @@
 	}
 }
 
-@keyframes opensim-content-in {
+@keyframes opensige-content-in {
 	from {
 		opacity: 0;
 		transform: translateY(4px);
@@ -349,11 +349,11 @@
    motion tokens, so `prefers-reduced-motion: reduce` (which zeroes every
    duration) removes the animation on its own. */
 ::view-transition-old(page-content) {
-	animation: opensim-content-out var(--motion-duration-base) var(--motion-ease-standard) both;
+	animation: opensige-content-out var(--motion-duration-base) var(--motion-ease-standard) both;
 }
 
 ::view-transition-new(page-content) {
-	animation: opensim-content-in var(--motion-duration-base) var(--motion-ease-emphasized) both;
+	animation: opensige-content-in var(--motion-duration-base) var(--motion-ease-emphasized) both;
 }
 
 /* Keep the group resize in sync with the fade, so the content box does not
@@ -463,22 +463,22 @@ textarea:focus-visible {
 /* Components should still prefer semantic class names + tokens; these are
  * only meant for one-off layout in route components. */
 
-.opensim-stack {
+.opensige-stack {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-4);
 }
-.opensim-row {
+.opensige-row {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: var(--space-3);
 }
-.opensim-grid {
+.opensige-grid {
 	display: grid;
 	gap: var(--space-4);
 }
-.opensim-divider {
+.opensige-divider {
 	border: 0;
 	border-top: 1px solid var(--border-subtle);
 	margin: var(--space-4) 0;

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Student profile loader (S6).
+ * OpenSIGE — Student profile loader (S6).
  *
  * Loads the signed-in student's OWN `student_profiles` row with an
  * explicit column allow-list, the same shape the dashboard loader
@@ -25,10 +25,10 @@ import { eq } from "drizzle-orm";
 import { getDb } from "#lib/server/db";
 import { careers, studentProfiles } from "#lib/server/db/schema";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const u = locals.user;

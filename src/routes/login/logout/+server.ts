@@ -1,8 +1,8 @@
 /**
- * OpenSIM — Logout endpoint.
+ * OpenSIGE — Logout endpoint.
  *
  * POST /login/logout
- *   1. Reads the `opensim_session` cookie.
+ *   1. Reads the `opensige_session` cookie.
  *   2. Calls `invalidateSession` to remove the matching row from D1.
  *   3. Deletes the cookie on the client.
  *   4. Redirects to /login?reason=logged-out so the login page can
@@ -21,7 +21,7 @@
 import { type RequestHandler, redirect } from "@sveltejs/kit";
 // `cloudflare:workers` is a URI-style specifier that the adapter's
 // Vite plugin resolves at runtime. tsc can't resolve it as a regular
-// module, so we cast through the locally-declared `OpenSimWorkerEnv`
+// module, so we cast through the locally-declared `OpenSigeWorkerEnv`
 // interface (see src/cloudflare-workers.d.ts).
 import { env as workerEnv } from "cloudflare:workers";
 
@@ -32,9 +32,9 @@ import {
 } from "#lib/server/auth";
 import { getDb } from "#lib/server/db";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const POST: RequestHandler = async ({ cookies }) => {
 	const token = cookies.get(SESSION_COOKIE_NAME);

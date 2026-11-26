@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Single subject card rendered inside the retícula SVG.
+  OpenSIGE — Single subject card rendered inside the retícula SVG.
 
   The whole DAG is one big <svg> so each subject is an SVG <g>
   containing a rect (filled with the HSL-hash color when neutral,

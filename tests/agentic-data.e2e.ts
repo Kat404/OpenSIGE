@@ -1,5 +1,5 @@
 /**
- * OpenSIM — data assertions judged by an agent.
+ * OpenSIGE — data assertions judged by an agent.
  *
  * The agentic lane buys one thing a locator cannot: a claim about DATA.
  * A locator can check that a number is on the screen; it cannot check that

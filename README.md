@@ -1,12 +1,19 @@
-# OpenSIM — Sistema Integral Modular (FOSS)
+# OpenSIGE — Sistema Integral de Gestión Educativa (FOSS)
 
-A FOSS redesign of TecNM Morelia's academic management system, built as a working demo.
+An open administrative system for a higher-education institution: the student's record, the
+staff's queues, and the procedures that connect them.
+
+OpenSIGE began as a redesign of TecNM Morelia's academic management system (the SIM) and
+became its own thing. The SIM is now **one verified data source** — the published course
+catalogue, the syllabi, the offering groups — not the product. The rules, the procedures and
+the roles are this project's own; the data is the institution's, and where a source is silent
+the interface says so instead of filling the gap.
 
 This is **not** a replica of the SIM and not a data mirror. The institution publishes some
 of its academic data and none of its scheduling, so a faithful copy is impossible by
 construction — scraping classmates would not close the gap either, because the schedule of
 an offered group simply does not exist until the SIM assigns it at enrolment (see
-`odd/tasks/phase-9-ui-integration.md`, finding H11). So OpenSIM takes the published half
+`odd/tasks/phase-9-ui-integration.md`, finding H11). So OpenSIGE takes the published half
 seriously and declares the other half.
 
 | Verified from the SIM | Design invention of this project |
@@ -23,7 +30,7 @@ the gap.
 **v1 covers one career: ISIC-2010-224 (Ingeniería en Sistemas Computacionales).** The other
 programmes are out of scope until their data is obtainable.
 
-- **Stack:** SvelteKit `3.1.0` + Svelte `5.57.2` (Runes) + Cloudflare D1 + Drizzle ORM `0.45.4` + TypeScript `6.0.3` + Vite+ `1.4.0` (`vp`: format, lint, test, build)
+- **Stack:** SvelteKit `3.4.1` + Svelte `5.59.2` (Runes) + Cloudflare D1 + Drizzle ORM `0.45.4` + TypeScript `6.0.3` + Vite+ `1.8.0` (`vp`: format, lint, test, build)
 - **UI language:** Spanish (es-MX)
 - **Code language:** English
 - **A11y target:** WCAG 2.1 AA
@@ -156,7 +163,7 @@ from `DEFAULT_CONTROL_NUMBER` in `src/lib/server/db/seed-password.ts`, not from 
 
 ```
 controlNumber: 99999999
-password:      opensim-dev-2026
+password:      opensige-dev-2026
 ```
 
 **That password is the fallback, not the truth.** `src/lib/server/db/seed-password.ts`
@@ -237,10 +244,10 @@ entirely synthetic, that is a one-file change.
 
 ## Disclaimer
 
-OpenSIM is a FOSS redesign of an institutional system. It is **not** a replica of the SIM
-and not a data mirror: the institution publishes part of its academic data and none of its
-scheduling, so a faithful copy is impossible by construction. The published half is taken
-seriously; the other half is declared rather than filled in.
+OpenSIGE is an open administrative system for a higher-education institution, not a replica
+of the SIM and not a data mirror: the institution publishes part of its academic data and
+none of its scheduling, so a faithful copy is impossible by construction. The published half
+is taken seriously; the other half is declared rather than filled in.
 
 The code is released into the public domain under [The Unlicense](https://unlicense.org).
 The license text lives in [`UNLICENSE`](UNLICENSE) at the root of the repository — one file

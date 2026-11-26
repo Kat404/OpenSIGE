@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Current-enrollment resolver (shared by dashboard and horario).
+ * OpenSIGE — Current-enrollment resolver (shared by dashboard and horario).
  *
  * Single source of truth for "what is this student currently enrolled
  * in this period?" Both `/dashboard` (today's classes widget) and

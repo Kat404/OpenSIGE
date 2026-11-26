@@ -1,4 +1,4 @@
-# OpenSIM — Drizzle ORM + Cloudflare D1: Migrations and Data
+# OpenSIGE — Drizzle ORM + Cloudflare D1: Migrations and Data
 
 **Audience:** anyone touching `src/lib/server/db/schema.ts` or running a local D1.
 **Last verified:** 2026-10-02.
@@ -125,7 +125,7 @@ The recipe:
 pnpm run db:set-password
 ```
 
-to restore the default test credential (`12345678` / `opensim-dev-2026`). Without this step, the login flow will fail with "Número de control o contraseña incorrectos" — not because the auth is broken, but because the credential row is gone.
+to restore the default test credential (`12345678` / `opensige-dev-2026`). Without this step, the login flow will fail with "Número de control o contraseña incorrectos" — not because the auth is broken, but because the credential row is gone.
 
 `db-reset` is a **recovery action**, not a workflow. The workflow is `db-generate` → `db-migrate` → `db-seed`. Reach for `db-reset` only when local D1 has drifted beyond what the canonical flow can repair.
 
@@ -175,4 +175,4 @@ Do not rewrite a committed `drizzle/00xx_*.sql` file just to make it apply clean
 - Drizzle migrations: <https://orm.drizzle.team/docs/migrations>
 - Cloudflare D1: <https://developers.cloudflare.com/d1/>
 - Drizzle + D1 adapter: `drizzle-orm/d1` (used in `src/lib/server/db/index.ts`)
-- OpenSIM justfile recipes: see `justfile` (`db-generate`, `db-migrate`, `db-migrate-remote`, `db-seed`, `db-reset`, `db-set-password`)
+- OpenSIGE justfile recipes: see `justfile` (`db-generate`, `db-migrate`, `db-migrate-remote`, `db-seed`, `db-reset`, `db-set-password`)

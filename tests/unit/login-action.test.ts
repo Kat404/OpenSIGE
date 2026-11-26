@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Login form action unit tests (Phase 11 T11.2).
+ * OpenSIGE — Login form action unit tests (Phase 11 T11.2).
  *
  * `src/routes/login/+page.server.ts` is the only place a session is
  * minted, so every branch it owns is a security boundary:

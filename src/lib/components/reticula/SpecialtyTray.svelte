@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Specialty module tray for /retícula.
+  OpenSIGE — Specialty module tray for /retícula.
 
   The 16 specialty modules have no registered semester (H8: the plan does
   not publish the term they are taken in), so the DAG cannot place them on

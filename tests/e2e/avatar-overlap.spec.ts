@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Avatar overlap acceptance suite (Phase 6.1 / U3 AC6–AC11).
+ * OpenSIGE — Avatar overlap acceptance suite (Phase 6.1 / U3 AC6–AC11).
  *
  * Closes the open AC6–AC11 criteria from the U3 spec
  * (odd/tasks/phase-6-ui-polish.md:173-189). The 80-matrix is 5 sizes ×

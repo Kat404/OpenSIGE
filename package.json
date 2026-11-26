@@ -1,10 +1,10 @@
 {
-	"name": "opensim",
+	"name": "opensige",
 	"private": true,
 	"version": "0.1.0",
 	"type": "module",
 	"packageManager": "pnpm@12.23.0",
-	"description": "OpenSIM — Sistema Integral Modular for TecNM Morelia. FOSS rewrite in SvelteKit 3 + Svelte 5 + Cloudflare D1.",
+	"description": "OpenSIGE — Sistema Integral Modular for TecNM Morelia. FOSS rewrite in SvelteKit 3 + Svelte 5 + Cloudflare D1.",
 	"scripts": {
 		"dev": "vp dev",
 		"build": "wrangler types && vp build && node scripts/inject-scheduled-handler.mjs",

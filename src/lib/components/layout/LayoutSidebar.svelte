@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Sidebar nav for the (protected) layout.
+  OpenSIGE — Sidebar nav for the (protected) layout.
 
   Collapsible on narrow screens, default-open on viewports >= 1024px
   (controlled by the parent LayoutShell via the `collapsed` prop +

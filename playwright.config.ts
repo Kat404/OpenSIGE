@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Playwright + axe-core audit configuration (Phase 5 Tarea 5.1).
+ * OpenSIGE — Playwright + axe-core audit configuration (Phase 5 Tarea 5.1).
  *
  * Uses Playwright's own Chromium by default. One command gives every
  * host the exact browser the tests were written against
