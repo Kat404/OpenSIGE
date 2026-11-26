@@ -14,7 +14,7 @@ This trades:
 
 - **Cost:** free-tier Actions minutes → local CPU cycles on the developer's machine.
 - **Convenience:** push-to-trigger runs → a one-liner (`just ci`).
-- **Reproducibility:** ephemeral cloud VM → a pinned image (`node:24-bookworm-slim` + apt-pinned Chromium + pnpm@10.0.0).
+- **Reproducibility:** ephemeral cloud VM → a pinned image (`node:24-bookworm-slim` + apt-pinned Chromium + pnpm@12.23.0).
 
 The trade is worth it for a one-person FOSS project whose CI is 7 axe-core routes + 149 vitest cases (~3 minutes on a modern laptop).
 

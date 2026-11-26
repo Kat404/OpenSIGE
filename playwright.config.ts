@@ -1,15 +1,13 @@
 /**
  * OpenSIM — Playwright + axe-core audit configuration (Phase 5 Tarea 5.1).
  *
- * Deliberately uses the system Chromium at `/usr/bin/chromium` instead
- * of Playwright's bundled browser. The host already has Chromium
- * 153.x installed; downloading Playwright's patched build would be
- * ~150 MB of duplicated disk for no test benefit (axe-core only needs
- * a standards-compliant browser, not Playwright's patches).
- *
- * To regenerate the browser binary on a fresh host, run:
- *   pnpm exec playwright install chromium
- * (skipped here via the system-Chromium shortcut; see Tarea 5.1.1).
+ * Uses Playwright's own Chromium by default. One command gives every
+ * host the exact browser the tests were written against
+ * (`pnpm exec playwright install chromium`), with no system package to
+ * install or to keep in sync with Playwright's expectations. The CI
+ * image (Containerfile.ci) already ships Chromium via apt and points
+ * `PLAYWRIGHT_CHROMIUM_PATH` at it, so the image carries no extra
+ * download.
  *
  * The dev server is auto-managed via `webServer` — Playwright spawns
  * `pnpm dev` for the suite and tears it down at the end. The
@@ -34,6 +32,19 @@ import { defineConfig, devices } from "@playwright/test";
 const PORT = 5173;
 const BASE_URL = `http://localhost:${PORT}`;
 
+/**
+ * Playwright's own Chromium by default; `PLAYWRIGHT_CHROMIUM_PATH`
+ * points the runner at another build — the CI image (Containerfile.ci)
+ * installs Chromium with apt and sets it, so the image ships no
+ * Playwright download.
+ */
+const LAUNCH_OPTIONS = {
+	...(process.env.PLAYWRIGHT_CHROMIUM_PATH
+		? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH }
+		: {}),
+	args: ["--no-sandbox", "--disable-dev-shm-usage"],
+};
+
 export default defineConfig({
 	testDir: "./tests/e2e",
 	fullyParallel: false,
@@ -53,21 +64,14 @@ export default defineConfig({
 		baseURL: BASE_URL,
 		trace: "retain-on-failure",
 		headless: true,
-		launchOptions: {
-			// System Chromium — no Playwright bundled browser.
-			executablePath: "/usr/bin/chromium",
-			args: ["--no-sandbox", "--disable-dev-shm-usage"],
-		},
+		launchOptions: LAUNCH_OPTIONS,
 	},
 	projects: [
 		{
 			name: "setup",
 			testMatch: /.*\.setup\.ts/,
 			use: {
-				launchOptions: {
-					executablePath: "/usr/bin/chromium",
-					args: ["--no-sandbox", "--disable-dev-shm-usage"],
-				},
+				launchOptions: LAUNCH_OPTIONS,
 			},
 		},
 		{
