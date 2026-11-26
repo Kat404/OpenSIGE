@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Per-subject detail loader (T9.12).
+ * OpenSIGE — Per-subject detail loader (T9.12).
  *
  * The page behind `/detalle/[canonicalId]`: one subject of the plan,
  * with the facts the catalogue holds about it and the syllabus the
@@ -38,10 +38,10 @@ import {
 } from "#lib/server/db/schema";
 import { parseUnit, type Unit } from "#lib/utils/temario";
 
-import type { OpenSimWorkerEnv } from "../../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 /** One prerequisite of the subject, with the identity the list shows. */
 export interface DetallePrerequisite {

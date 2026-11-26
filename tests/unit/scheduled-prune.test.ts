@@ -1,5 +1,5 @@
 /**
- * OpenSIM — The cron prune statements, as they ship (Phase 12 T13.3).
+ * OpenSIGE — The cron prune statements, as they ship (Phase 12 T13.3).
  *
  * The `scheduled` handler is not in `src/`: a build step injects it
  * into the bundled worker, because SvelteKit owns the worker's default

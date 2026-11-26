@@ -1,5 +1,5 @@
 /**
- * OpenSIM — The two contracts the toolchain upgrade put in writing.
+ * OpenSIGE — The two contracts the toolchain upgrade put in writing.
  *
  * `@sveltejs/adapter-cloudflare` 9 moved the built worker and the static
  * assets, and the adapter now REJECTS a `main` that points into

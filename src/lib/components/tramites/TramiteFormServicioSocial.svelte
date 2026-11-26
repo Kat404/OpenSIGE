@@ -1,9 +1,9 @@
 <!--
-  OpenSIM — Servicio Social form (Phase 4 Tarea 4.2).
+  OpenSIGE — Servicio Social form (Phase 4 Tarea 4.2).
 
   Static form surface for the academic procedure. Submission is a
   Phase 5+ concern; for now the form posts to the page's default
-  action, which refuses the submission: OpenSIM stores no
+  action, which refuses the submission: OpenSIGE stores no
   procedure request yet.
 
   The component is *content-only*: the parent stepper controls the

@@ -10,7 +10,7 @@ import {
 } from "drizzle-orm/sqlite-core";
 
 /**
- * OpenSIM — Drizzle ORM Schema (12 normalized tables)
+ * OpenSIGE — Drizzle ORM Schema (12 normalized tables)
  *
  * Program: ISIC-2010-224 (Ingenieria en Sistemas Computacionales, TecNM Morelia)
  * See: odd/tasks/opensim.md §5.1 for canonical spec.

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Vectorial Carga Académica PDF generator.
+ * OpenSIGE — Vectorial Carga Académica PDF generator.
  *
  * Phase 4 Tarea 4.3: the dashboard exposes a "Descargar Carga
  * Académica (PDF)" button that POSTs to `/api/export/carga`. The
@@ -95,7 +95,7 @@ function dayLetter(b: CourseScheduleBlock): DayLetter | null {
  */
 export async function generateCargaPdf(input: CargaPdfInput): Promise<Uint8Array> {
 	const doc = await PDFDocument.create();
-	doc.setTitle("Carga Académica — OpenSIM");
+	doc.setTitle("Carga Académica — OpenSIGE");
 	doc.setAuthor("TecNM Morelia");
 	doc.setSubject(`Carga académica del periodo ${input.period}`);
 

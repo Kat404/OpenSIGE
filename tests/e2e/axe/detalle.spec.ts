@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /detalle/[canonicalId] (T9.12).
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /detalle/[canonicalId] (T9.12).
  *
  * Every protected route has its own sweep file, because the gate is
  * per route, not per app. This one has TWO scans because the page

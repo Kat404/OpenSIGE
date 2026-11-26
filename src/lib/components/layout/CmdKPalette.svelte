@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Cmd+K global palette.
+  OpenSIGE — Cmd+K global palette.
 
   A minimal modal that indexes the protected-route nav plus the
   subjects catalog and lets the user fuzzy-search via `includes()`

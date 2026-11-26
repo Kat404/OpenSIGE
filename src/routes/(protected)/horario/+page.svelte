@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Horario semanal page.
+  OpenSIGE — Horario semanal page.
 
   Header plus either the TimeGridSchedule or an EmptyState when the
   student has no real enrollment. No synthetic data is ever served
@@ -23,7 +23,7 @@ let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
-	<title>Horario — OpenSIM</title>
+	<title>Horario — OpenSIGE</title>
 	<meta name="description" content="Horario semanal con bloques proporcionales al tiempo real.">
 </svelte:head>
 

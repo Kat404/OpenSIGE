@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Retícula Académica DAG.
+  OpenSIGE — Retícula Académica DAG.
 
   Lays out subjects in a 9-column grid (one per semester, semesters
   1..9) and draws a Bézier connector between every (prereq -> subject)

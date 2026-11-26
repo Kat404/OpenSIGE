@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Atomic UI components barrel export.
+ * OpenSIGE — Atomic UI components barrel export.
  *
  * All components are pure Svelte 5 runes-driven, consume design tokens
  * exclusively via CSS custom properties, and expose Spanish UI copy in

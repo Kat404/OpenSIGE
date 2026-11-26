@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * OpenSIM — Post-build scheduled-handler injector.
+ * OpenSIGE — Post-build scheduled-handler injector.
  *
  * `@sveltejs/adapter-cloudflare` 9 emits the Worker entry at
  * `.svelte-kit/cloudflare/worker/index.js` with only a `fetch` handler on

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Simulador de Reinscripción (Phase 4 Tarea 4.1).
+ * OpenSIGE — Simulador de Reinscripción (Phase 4 Tarea 4.1).
  *
  * The simulator lets a student browse the available course groups
  * for the current period, filter by subject area / credits / text,
@@ -68,10 +68,10 @@ import { formStrings } from "#lib/utils/form";
 import { findConflicts } from "#lib/utils/schedule-conflict";
 import { foldText } from "#lib/utils/text-match";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 /**
  * Rows per page of the offering catalogue (T9.14).

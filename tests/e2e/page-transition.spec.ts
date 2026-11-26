@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the sidebar navigation animates the content (S4).
+ * OpenSIGE — the sidebar navigation animates the content (S4).
  *
  * The animation is browser-side: the page content is its own view
  * transition group and the shell drives `document.startViewTransition`

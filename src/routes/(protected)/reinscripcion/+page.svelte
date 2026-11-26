@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Simulador de Reinscripción page (Phase 4 Tarea 4.1).
+  OpenSIGE — Simulador de Reinscripción page (Phase 4 Tarea 4.1).
 
   The page composes the EnrollmentSimulator with a header and
   surfaces the period + the form error returned by the action (if
@@ -15,7 +15,7 @@ const formError = $derived(form && "error" in form ? form.error : null);
 </script>
 
 <svelte:head>
-	<title>Reinscripción — OpenSIM</title>
+	<title>Reinscripción — OpenSIGE</title>
 	<meta
 		name="description"
 		content="Simulador de reinscripción con detección de conflictos de horario."

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the dashboard's classes widget shows the WHOLE week.
+ * OpenSIGE — the dashboard's classes widget shows the WHOLE week.
  *
  * The dashboard's left column used to hold only TODAY's classes: for a
  * student with an active enrolment it measured 238px against a 599px
@@ -28,7 +28,7 @@ if (process.env.OPENSIM_TEST_PASSWORD === undefined && existsSync(".env")) {
 }
 
 const CONTROL_NUMBER = "12345678";
-const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensim-dev-2026";
+const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensige-dev-2026";
 
 /** The day letters the TecNM grid uses, in the order the week runs. */
 const DAY_LETTERS = ["L", "M", "X", "J", "V", "S", "D"];

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Carga Académica PDF export endpoint.
+ * OpenSIGE — Carga Académica PDF export endpoint.
  *
  * POST /api/export/carga
  *   Generates a vectorial PDF of the current student's enrolled
@@ -41,9 +41,9 @@ import {
 } from "#lib/server/db/schema";
 import { getCurrentPeriod } from "#lib/server/enrollment";
 
-import type { OpenSimWorkerEnv } from "../../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../../cloudflare-workers";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export const POST: RequestHandler = async ({ locals }) => {
 	// Auth gate. The (protected) layout middleware only applies to

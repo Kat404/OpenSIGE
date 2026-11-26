@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Kardex page loader (Phase 3 Tarea 3.5).
+ * OpenSIGE — Kardex page loader (Phase 3 Tarea 3.5).
  *
  * Returns the student's `student_progress` rows joined with the
  * subjects catalog so the table gets a single uniform shape
@@ -23,10 +23,10 @@ import {
 	subjects,
 } from "#lib/server/db/schema";
 
-import type { OpenSimWorkerEnv } from "../../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export interface KardexRow {
 	code: string;

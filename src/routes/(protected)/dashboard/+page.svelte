@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Student dashboard (Phase 3 Tarea 3.2).
+  OpenSIGE — Student dashboard (Phase 3 Tarea 3.2).
 
   Replaces the Phase 2 placeholder with four KPI cards, a weekly
   classes widget, and a CTA card that links to the retícula. The
@@ -29,8 +29,8 @@ function fmtAverage(value: number): string {
 </script>
 
 <svelte:head>
-	<title>Panel — OpenSIM</title>
-	<meta name="description" content="Resumen académico del estudiante OpenSIM.">
+	<title>Panel — OpenSIGE</title>
+	<meta name="description" content="Resumen académico del estudiante OpenSIGE.">
 </svelte:head>
 
 <section class="dashboard">

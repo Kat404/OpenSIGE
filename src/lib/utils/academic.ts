@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Academic constants and helpers.
+ * OpenSIGE — Academic constants and helpers.
  *
  * Single source of truth for the TecNM grading scale used by the
  * kardex, the retícula, and any future academic surface that needs

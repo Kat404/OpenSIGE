@@ -3,7 +3,7 @@ import { Card } from "#lib/components/ui";
 </script>
 
 <svelte:head>
-	<title>Recuperar contraseña — OpenSIM</title>
+	<title>Recuperar contraseña — OpenSIGE</title>
 	<meta
 		name="description"
 		content="Cómo recuperar el acceso a tu cuenta del Sistema Integral Modular de TecNM Morelia."
@@ -18,7 +18,7 @@ import { Card } from "#lib/components/ui";
 
 		<section class="recovery__body">
 			<p>
-				OpenSIM no gestiona el restablecimiento de contraseñas por sí mismo. El acceso al Sistema
+				OpenSIGE no gestiona el restablecimiento de contraseñas por sí mismo. El acceso al Sistema
 				Integral Modular está ligado a tu número de control y se administra a través de los
 				procedimientos institucionales del TecNM Morelia.
 			</p>

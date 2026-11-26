@@ -1,5 +1,5 @@
 /**
- * OpenSIM — page transition decisions (feature S4).
+ * OpenSIGE — page transition decisions (feature S4).
  *
  * The animation itself is browser-side: CSS `::view-transition-*`
  * pseudo-elements driven by `document.startViewTransition`. What lives

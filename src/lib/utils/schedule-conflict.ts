@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Pure schedule-conflict detection.
+ * OpenSIGE — Pure schedule-conflict detection.
  *
  * Used by the Reinscripción simulator (Phase 4 Tarea 4.1) to answer
  * "does this candidate group's schedule overlap with anything the

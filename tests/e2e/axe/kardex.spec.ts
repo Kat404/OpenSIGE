@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /academico/kardex (Phase 5 Tarea 5.1.3).
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /academico/kardex (Phase 5 Tarea 5.1.3).
  *
  * Two scans: the unfiltered table and the table with the
  * "Repetición" filter pill active, so the filter chip's expanded

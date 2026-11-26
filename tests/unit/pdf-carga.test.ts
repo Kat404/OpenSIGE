@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Carga Académica PDF generator unit tests (Phase 4 Tarea 4.3).
+ * OpenSIGE — Carga Académica PDF generator unit tests (Phase 4 Tarea 4.3).
  *
  * The PDF generator wraps pdf-lib's `PDFDocument.create()` and
  * returns a `Uint8Array`. We import the module (pdf-lib is a

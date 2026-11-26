@@ -1,5 +1,5 @@
 /**
- * OpenSIM — accent-insensitive text matching.
+ * OpenSIGE — accent-insensitive text matching.
  *
  * A TecNM Morelia student types "algebra" and the catalogue holds
  * "Álgebra Lineal". `toLowerCase()` alone does not bridge that: the accented

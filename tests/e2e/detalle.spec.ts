@@ -1,5 +1,5 @@
 /**
- * OpenSIM — /detalle/[canonicalId] functional spec (T9.12, S1, S2).
+ * OpenSIGE — /detalle/[canonicalId] functional spec (T9.12, S1, S2).
  *
  * The per-subject page: one subject of the plan, with the facts the
  * catalogue holds about it and the syllabus the portal published for

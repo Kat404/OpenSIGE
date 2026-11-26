@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: `/` (landing) and
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: `/` (landing) and
  * `/design-system` (component gallery), plus the 404 boundary
  * (`+error.svelte`) (Phase 5 Tarea 5.1.3).
  *

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Login form action.
+ * OpenSIGE — Login form action.
  *
  * Handles POST submissions to `/login`. Validates the form with
  * Valibot, looks up the credential row, verifies the password via
@@ -16,7 +16,7 @@
 import { type Actions, fail, redirect, type ServerLoad } from "@sveltejs/kit";
 // `cloudflare:workers` is a URI-style specifier that the adapter's
 // Vite plugin resolves at runtime. tsc can't resolve it as a regular
-// module, so we cast through the locally-declared `OpenSimWorkerEnv`
+// module, so we cast through the locally-declared `OpenSigeWorkerEnv`
 // interface (see src/cloudflare-workers.d.ts).
 import { env as workerEnv } from "cloudflare:workers";
 import * as v from "valibot";
@@ -38,9 +38,9 @@ import { getDb } from "#lib/server/db";
 import { formString } from "#lib/utils/form";
 import { safeInternalRedirect } from "#lib/utils/redirect";
 
-import type { OpenSimWorkerEnv } from "../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../cloudflare-workers";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 const LoginSchema = v.object({
 	controlNumber: v.pipe(

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /reinscripcion (Phase 5 Tarea 5.1.3).
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /reinscripcion (Phase 5 Tarea 5.1.3).
  */
 import { test } from "@playwright/test";
 

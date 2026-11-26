@@ -1,9 +1,9 @@
-# OpenSIM — Auditoría de accesibilidad (Phase 5 Tarea 5.1)
+# OpenSIGE — Auditoría de accesibilidad (Phase 5 Tarea 5.1)
 
 Fecha: 2026-10-03
 Metodología: `@axe-core/playwright 4.13.0` + revisión externa con `mcode` (M3.1-Flash-Preview) en `--effort max` / `--prompt-mode work`.
 Branch auditado: `feat/phase-1-foundation` @ 50 commits.
-Dev credential: `controlNumber=12345678` / `password=opensim-dev-2026`.
+Dev credential: `controlNumber=12345678` / `password=opensige-dev-2026`.
 
 ---
 
@@ -102,7 +102,7 @@ just test-e2e-ui
 ## Reproducibilidad
 
 ```bash
-cd <HOME>/Proyectos/OpenSIM
+cd <HOME>/Proyectos/OpenSIGE
 just db-reset && just db-set-password && just test-e2e
 # → 14 passed in ~33s
 ```

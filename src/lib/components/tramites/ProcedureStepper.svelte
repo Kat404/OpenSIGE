@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Procedure stepper (Phase 4 Tarea 4.2).
+  OpenSIGE — Procedure stepper (Phase 4 Tarea 4.2).
 
   Wraps the existing `Stepper` atom (read-only) and pairs each
   step with a procedure form. The stepper's `current` index is the
@@ -38,7 +38,7 @@ let { procedures, totalCredits, formNotice = null }: Props = $props();
 
 /**
  * The three procedure forms collect ten fields each, and the action
- * reads the FormData only to throw it away: OpenSIM stores no
+ * reads the FormData only to throw it away: OpenSIGE stores no
  * procedure request. Rather than let a student fill a form for
  * nothing, the forms render disabled and the reason is on screen
  * BEFORE the first field. This constant is the single flip point when

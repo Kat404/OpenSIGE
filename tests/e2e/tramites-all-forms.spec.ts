@@ -16,7 +16,7 @@ const FORMS = ["Servicio social", "Residencia", "Titulación"];
 test("every control of every procedure form is disabled", async ({ page }) => {
 	await page.goto("/tramites");
 
-	await expect(page.getByText("OpenSIM todavía no guarda solicitudes de trámite.")).toBeVisible();
+	await expect(page.getByText("OpenSIGE todavía no guarda solicitudes de trámite.")).toBeVisible();
 
 	for (const form of FORMS) {
 		const step = page.getByRole("button", { name: form });

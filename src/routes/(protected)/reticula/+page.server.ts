@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Retícula académica loader (Phase 3 Tarea 3.4).
+ * OpenSIGE — Retícula académica loader (Phase 3 Tarea 3.4).
  *
  * Loads the verified 68-subject catalog, the 14 verified prerequisite
  * edges and the student's `student_progress` (so each subject node can be
@@ -38,10 +38,10 @@ import {
 	subjects,
 } from "#lib/server/db/schema";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export interface RetSubject {
 	canonicalId: string;

@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Student profile (S6).
+  OpenSIGE — Student profile (S6).
 
   Presents the student's OWN general data as cards. Everything comes
   from this page's own server loader (`+page.server.ts`): the
@@ -39,8 +39,8 @@ function statusVariant(status: string): "success" | "neutral" {
 </script>
 
 <svelte:head>
-	<title>Perfil — OpenSIM</title>
-	<meta name="description" content="Datos generales del estudiante OpenSIM.">
+	<title>Perfil — OpenSIGE</title>
+	<meta name="description" content="Datos generales del estudiante OpenSIGE.">
 </svelte:head>
 
 {#snippet field(
@@ -57,7 +57,7 @@ function statusVariant(status: string): "success" | "neutral" {
 	<header class="perfil__header">
 		<p class="perfil__eyebrow">Expediente</p>
 		<h1 class="perfil__title">Perfil del estudiante</h1>
-		<p class="perfil__sub">Tus datos generales, tal como los tiene el registro de OpenSIM.</p>
+		<p class="perfil__sub">Tus datos generales, tal como los tiene el registro de OpenSIGE.</p>
 	</header>
 
 	{#if !profile}

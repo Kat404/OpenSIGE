@@ -1,4 +1,4 @@
-# OpenSIM — Local CI (Podman, post-GitHub-Actions)
+# OpenSIGE — Local CI (Podman, post-GitHub-Actions)
 
 Fecha: 2026-10-04
 Target: reproducible CI gate that runs anywhere Podman runs.

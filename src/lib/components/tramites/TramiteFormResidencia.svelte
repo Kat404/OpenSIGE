@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Residencia Profesional form (Phase 4 Tarea 4.2).
+  OpenSIGE — Residencia Profesional form (Phase 4 Tarea 4.2).
 
   Static form surface. Requires >= 208 CR (80% of 260). Submission
   is a Phase 5+ concern: the form renders disabled, because the

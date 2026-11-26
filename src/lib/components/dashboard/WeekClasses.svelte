@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Weekly classes widget for the dashboard.
+  OpenSIGE — Weekly classes widget for the dashboard.
 
   Renders the student's WHOLE week: one row per class block, ordered
   by day (L M X J V S D) and then by start time, so the server and the

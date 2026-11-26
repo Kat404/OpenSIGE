@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Logout endpoint unit tests (Phase 11 T11.4).
+ * OpenSIGE — Logout endpoint unit tests (Phase 11 T11.4).
  *
  * `POST /login/logout` is the only session-termination path. Its
  * contract, from `src/routes/login/logout/+server.ts`:

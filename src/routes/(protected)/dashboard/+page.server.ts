@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Dashboard data loader (Phase 3 Tarea 3.2; Phase 4 N6).
+ * OpenSIGE — Dashboard data loader (Phase 3 Tarea 3.2; Phase 4 N6).
  *
  * Loads the four headline KPIs plus the week widget's data
  * in two batched round trips to D1. Per audit NEW-1, every query
@@ -36,10 +36,10 @@ import { studentProfiles, subjects } from "#lib/server/db/schema";
 import { getCurrentEnrollment, getCurrentPeriod } from "#lib/server/enrollment";
 import { type DayLetter, getTodayDayLetter } from "#lib/utils/time";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 /** The day letters the TecNM grid uses, in the order the week runs. */
 const DAY_LETTERS: ReadonlySet<DayLetter> = new Set(["L", "M", "X", "J", "V", "S", "D"]);

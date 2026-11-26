@@ -1,5 +1,5 @@
-# OpenSIM — Open Source - Sistema Integral Modular
-# OpenSIM rewrite in SvelteKit 3 + Svelte 5 + Cloudflare D1.
+# OpenSIGE — Open Source - Sistema Integral Modular
+# OpenSIGE rewrite in SvelteKit 3 + Svelte 5 + Cloudflare D1.
 # Run `just` (or `just help`) to list recipes.
 # Maintainer: Kat404 <Kat404@users.noreply.github.com>
 
@@ -235,7 +235,7 @@ db-set-password-alumno:
 # Reads OPENSIM_TEST_PASSWORD from .env — `dotenv-load := true` is set at the
 # top of this file, so no inline env var is needed:
 #     just db-set-password-remote
-# seed-password.ts refuses the dev default ("opensim-dev-2026") when
+# seed-password.ts refuses the dev default ("opensige-dev-2026") when
 # OPENSIM_D1_TARGET=remote, so .env must define the key. An inline
 # `OPENSIM_TEST_PASSWORD=...` still works as a one-off override.
 db-set-password-remote:
@@ -313,14 +313,14 @@ qa-fast: check vp-check test
 
 # ===== CI (Podman local) =====
 
-# Build the opensim-ci container image from Containerfile.ci.
+# Build the opensige-ci container image from Containerfile.ci.
 # First-time setup; rebuild when Containerfile.ci or dependencies change.
 [group('ci')]
-[doc('Build the opensim-ci container image from Containerfile.ci.')]
+[doc('Build the opensige-ci container image from Containerfile.ci.')]
 ci-build:
-    podman build -f Containerfile.ci -t opensim-ci:latest .
+    podman build -f Containerfile.ci -t opensige-ci:latest .
 
-# Run the fast pre-commit QA gate inside the opensim-ci container.
+# Run the fast pre-commit QA gate inside the opensige-ci container.
 # bind-mounts the repo to /repo; --userns=keep-id preserves host UID
 # for bind-mounted artifacts (playwright-report, test-results);
 # -e HOME=/tmp because npm/pnpm need HOME and the kept host UID
@@ -330,31 +330,31 @@ ci-build:
 # It does NOT run the axe-core e2e suite — for that, run `just test-e2e`
 # on the host (it needs system Chromium and local D1 state).
 [group('ci')]
-[doc('Run `just qa-fast` (check + vp-check + test) inside opensim-ci container. For axe-core e2e suite, run `just test-e2e` separately.')]
+[doc('Run `just qa-fast` (check + vp-check + test) inside opensige-ci container. For axe-core e2e suite, run `just test-e2e` separately.')]
 ci: ci-build
     podman run --rm \
         --userns=keep-id \
         -v "$(pwd)":/repo \
         -w /repo \
         -e HOME=/tmp \
-        opensim-ci:latest
+        opensige-ci:latest
 
-# Interactive shell inside the opensim-ci container. For debugging.
+# Interactive shell inside the opensige-ci container. For debugging.
 [group('ci')]
-[doc('Interactive bash shell inside opensim-ci container.')]
+[doc('Interactive bash shell inside opensige-ci container.')]
 ci-shell:
     podman run --rm -it \
         --userns=keep-id \
         -v "$(pwd)":/repo \
         -w /repo \
         -e HOME=/tmp \
-        opensim-ci:latest bash
+        opensige-ci:latest bash
 
-# Remove the opensim-ci container image.
+# Remove the opensige-ci container image.
 [group('ci')]
-[doc('Remove the opensim-ci container image.')]
+[doc('Remove the opensige-ci container image.')]
 ci-clean:
-    podman rmi opensim-ci:latest
+    podman rmi opensige-ci:latest
 
 # Migration re-apply smoke test (opt-in, quarterly). Snapshots the
 # local D1 state, re-applies the migrations directory, and diffs

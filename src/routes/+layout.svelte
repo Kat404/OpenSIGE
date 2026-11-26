@@ -6,7 +6,7 @@ let { children } = $props();
 </script>
 
 <svelte:head>
-	<title>OpenSIM</title>
+	<title>OpenSIGE</title>
 	<link rel="icon" href={favicon}>
 </svelte:head>
 

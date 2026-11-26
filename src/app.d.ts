@@ -12,7 +12,7 @@ declare global {
 		}
 
 		interface Locals {
-			// Populated by hooks.server.ts from the `opensim_session` cookie.
+			// Populated by hooks.server.ts from the `opensige_session` cookie.
 			// `null` means "unauthenticated"; route loaders/actions use this
 			// to gate /academico/* and to render personalised chrome.
 			user: StudentProfile | null;

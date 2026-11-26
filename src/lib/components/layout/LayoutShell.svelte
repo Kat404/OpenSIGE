@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Shell for the (protected) route group.
+  OpenSIGE — Shell for the (protected) route group.
 
   Composes the sidebar + header + main slot. Builds the Cmd+K palette
   index from the same source data the route loaders already returned

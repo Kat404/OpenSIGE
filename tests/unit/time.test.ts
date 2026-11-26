@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Timezone-aware day / date helpers unit tests.
+ * OpenSIGE — Timezone-aware day / date helpers unit tests.
  *
  * Anchors used in the assertions:
  *   2026-10-02 is a Friday.

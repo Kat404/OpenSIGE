@@ -1,5 +1,5 @@
 /**
- * OpenSIM — reading a text field out of a FormData.
+ * OpenSIGE — reading a text field out of a FormData.
  *
  * `FormData.get` returns `FormDataEntryValue | null`, and a
  * `FormDataEntryValue` can be a `File`. `String(file)` is

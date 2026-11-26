@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Public landing spec (Phase 12 T12.2).
+ * OpenSIGE — Public landing spec (Phase 12 T12.2).
  *
  * The front door used to be the UI component inventory: a gallery of
  * atoms with hardcoded demo fixtures, open to anyone. The inventory
@@ -12,7 +12,7 @@ import { expect, test } from "@playwright/test";
 test("the front door is the landing, not the component inventory", async ({ page }) => {
 	await page.goto("/");
 
-	await expect(page.getByRole("heading", { level: 1 })).toHaveText("OpenSIM");
+	await expect(page.getByRole("heading", { level: 1 })).toHaveText("OpenSIGE");
 	await expect(page.getByRole("link", { name: "Entrar con tu número de control" })).toHaveAttribute(
 		"href",
 		"/login",

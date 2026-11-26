@@ -1,5 +1,5 @@
 /**
- * OpenSIM — HSL color hash unit tests (theme-aware).
+ * OpenSIGE — HSL color hash unit tests (theme-aware).
  *
  * The function is pure and deterministic; contracts under test are
  * stability across calls, distribution of hues, the literal shape of

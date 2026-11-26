@@ -1,5 +1,5 @@
 /**
- * OpenSIM — e2e agentic end-to-end configuration.
+ * OpenSIGE — e2e agentic end-to-end configuration.
  *
  * The agent steps run against a real browser and a real model gateway, which
  * makes two things true that this file exists to enforce:
@@ -177,7 +177,7 @@ export default {
 			system:
 				"Agente de QA. La aplicación está en español: lee las pantallas en español y responde sobre lo que se ve, sin inventar datos.",
 			context:
-				"OpenSIM es el sistema de gestión académica del Instituto Tecnológico de Morelia. v1 cubre solo la carrera de Ingeniería en Sistemas Computacionales. Cuando una pantalla no muestra un dato, no lo completes: es correcto que falte.",
+				"OpenSIGE es el sistema de gestión académica del Instituto Tecnológico de Morelia. v1 cubre solo la carrera de Ingeniería en Sistemas Computacionales. Cuando una pantalla no muestra un dato, no lo completes: es correcto que falte.",
 		},
 	},
 	targets: [

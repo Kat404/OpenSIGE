@@ -1,5 +1,5 @@
 /**
- * OpenSIM — `/retícula` specialty tray, laboratory badge and seriation
+ * OpenSIGE — `/retícula` specialty tray, laboratory badge and seriation
  * branch (Phase 9 T9.10).
  *
  * Three claims the retícula makes to a student, each asserted here against

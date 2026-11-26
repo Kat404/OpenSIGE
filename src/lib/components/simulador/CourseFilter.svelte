@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Course filter panel for the Reinscripción simulator.
+  OpenSIGE — Course filter panel for the Reinscripción simulator.
 
   A GET form: submitting it navigates to `/reinscripcion?q=…&credits=…`,
   the loader narrows in SQL, and the page comes back paged (T9.14). The

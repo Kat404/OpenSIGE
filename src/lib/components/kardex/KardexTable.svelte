@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Kardex unificado.
+  OpenSIGE — Kardex unificado.
 
   Filter pills (Todos / Ordinario / Repetición / Especial) + the
   Table atom. The atom owns the column sort UI; this component owns

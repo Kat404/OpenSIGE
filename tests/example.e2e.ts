@@ -1,5 +1,5 @@
 /**
- * OpenSIM — e2e smoke test.
+ * OpenSIGE — e2e smoke test.
  *
  * The login test is **deliberately deterministic**. Signing in with a
  * credential is not a flow that changes, so the agent earns nothing there: it

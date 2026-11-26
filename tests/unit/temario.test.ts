@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Syllabus parsing helpers (T9.12, S3).
+ * OpenSIGE — Syllabus parsing helpers (T9.12, S3).
  *
  * The three JSON columns of `subject_units` (`subtopics_json`,
  * `instruments`, `criteria`) hold what the SIM published, verbatim.

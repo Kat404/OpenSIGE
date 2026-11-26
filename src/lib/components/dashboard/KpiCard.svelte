@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — KPI tile for the dashboard.
+  OpenSIGE — KPI tile for the dashboard.
 
   Renders a single metric card with optional accent and sublabel.
   Designed to live inside a 4-column grid; the card itself only

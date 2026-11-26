@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Session lifecycle unit tests (Phase 11 T11.3).
+ * OpenSIGE — Session lifecycle unit tests (Phase 11 T11.3).
  *
  * The session primitives in `src/lib/server/auth.ts` are the only
  * durable state in the auth path: a row in `auth_sessions` is what

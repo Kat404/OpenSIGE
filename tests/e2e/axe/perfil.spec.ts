@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /perfil.
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /perfil.
  *
  * The profile page is a new protected route: every protected route has
  * its own sweep file, because the gate is per route, not per app.

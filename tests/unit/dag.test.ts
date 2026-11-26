@@ -1,5 +1,5 @@
 /**
- * OpenSIM — DAG algorithm unit tests.
+ * OpenSIGE — DAG algorithm unit tests.
  *
  * Pure tests, no environment setup. The DAG is hand-built in-memory using
  * small graphs (2-6 nodes) to exercise the contract documented in

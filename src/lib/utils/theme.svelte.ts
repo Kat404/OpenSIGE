@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Reactive theme tracking.
+ * OpenSIGE — Reactive theme tracking.
  *
  * The user-facing theme toggle in `LayoutHeader` writes to
  * `document.documentElement[data-theme]`; this module is the

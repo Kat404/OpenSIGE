@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Native single-file authentication.
+ * OpenSIGE — Native single-file authentication.
  *
  * Implements the CF-3 decision (v2.2 spec §5.1, §9, §16, Tarea 2.5):
  *   - PBKDF2-HMAC-SHA-256 password hashing via `crypto.subtle`
@@ -44,7 +44,7 @@ const SALT_BYTES = 16;
 const DERIVED_KEY_BITS = 256; // 32 bytes
 const SESSION_TOKEN_BYTES = 32;
 const SESSION_LIFETIME_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
-const COOKIE_NAME = "opensim_session";
+const COOKIE_NAME = "opensige_session";
 
 // ---------- Rate limiting (audit R8-9 / P0-2) ----------
 //

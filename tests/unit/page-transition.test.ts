@@ -1,5 +1,5 @@
 /**
- * OpenSIM — page transition unit tests (feature S4).
+ * OpenSIGE — page transition unit tests (feature S4).
  *
  * The animation itself lives in the browser: CSS `::view-transition-*`
  * pseudo-elements driven by `document.startViewTransition`. There is no

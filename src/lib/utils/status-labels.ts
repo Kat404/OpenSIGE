@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Student-progress status labels and colours.
+ * OpenSIGE — Student-progress status labels and colours.
  *
  * Single source of truth for the four student-progress statuses
  * (`APPROVED` / `ENROLLED` / `AVAILABLE` / `LOCKED`) used by the

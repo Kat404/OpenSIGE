@@ -1,7 +1,7 @@
 /**
- * OpenSIM — /tramites functional spec (Phase 12 T12.1).
+ * OpenSIGE — /tramites functional spec (Phase 12 T12.1).
  *
- * The three procedure forms collect ten fields each, and OpenSIM
+ * The three procedure forms collect ten fields each, and OpenSIGE
  * stores no procedure request: the action reads the FormData and
  * discards it. The forms are therefore disabled, and the page says so
  * BEFORE the student types anything.
@@ -18,7 +18,7 @@ test("the procedure forms are disabled and the page says why", async ({ page }) 
 	await page.goto("/tramites");
 
 	// The reason is on screen, not buried in a response.
-	await expect(page.getByText("OpenSIM todavía no guarda solicitudes de trámite.")).toBeVisible();
+	await expect(page.getByText("OpenSIGE todavía no guarda solicitudes de trámite.")).toBeVisible();
 
 	// Every control of the visible procedure form is disabled — the
 	// fieldset carries the attribute, so the inputs inside inherit it.

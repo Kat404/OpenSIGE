@@ -1,5 +1,14 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
+	// The Worker keeps the name "opensim" on purpose: renaming it here
+	// deploys under a NEW Worker name and leaves the old one serving the
+	// demo until someone deletes it. That is a production operation with
+	// its own cutover (old URL, new URL, deletion), so it is a separate,
+	// explicitly authorised step -- not a side effect of a rename in the
+	// repository. The same reasoning applies to the D1 database name:
+	// `wrangler d1` has no `rename`, so moving it means create + copy +
+	// repoint, with a new database_id. The brand lives in the code and in
+	// the interface; these two stay as identifiers.
 	"name": "opensim",
 	// The account is named here so every remote recipe works without
 	// CLOUDFLARE_ACCOUNT_ID in the environment. An account id is an

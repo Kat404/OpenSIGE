@@ -1,9 +1,9 @@
 <!--
-  OpenSIM — Trámites page (Phase 4 Tarea 4.2).
+  OpenSIGE — Trámites page (Phase 4 Tarea 4.2).
 
   Page-level header + the procedure stepper. The stepper owns the
   step state and renders the matching form. The three forms are
-  disabled on screen, because OpenSIM stores no procedure request:
+  disabled on screen, because OpenSIGE stores no procedure request:
   the default action refuses the submission with a 501 and the page
   says why before the first field.
 -->
@@ -16,7 +16,7 @@ const formNotice = $derived(form && "notice" in form ? (form.notice as string) :
 </script>
 
 <svelte:head>
-	<title>Trámites — OpenSIM</title>
+	<title>Trámites — OpenSIGE</title>
 	<meta name="description" content="Servicio Social, Residencia Profesional y Titulación.">
 </svelte:head>
 

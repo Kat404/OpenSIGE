@@ -1,5 +1,5 @@
 <!--
-  OpenSIM — Retícula Académica page.
+  OpenSIGE — Retícula Académica page.
 
   Hosts the ReticulaDag SVG component. The status legend is rendered
   here so the DAG itself stays focused on the layout + hover logic.
@@ -51,7 +51,7 @@ const specialtyModules = $derived(data.subjects.filter((s) => s.inStudentSpecial
 </script>
 
 <svelte:head>
-	<title>Retícula — OpenSIM</title>
+	<title>Retícula — OpenSIGE</title>
 	<meta name="description" content="Retícula académica en grafo DAG interactivo.">
 </svelte:head>
 

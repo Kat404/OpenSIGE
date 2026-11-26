@@ -1,5 +1,5 @@
 /**
- * OpenSIM — /reinscripcion layout acceptance (S3).
+ * OpenSIGE — /reinscripcion layout acceptance (S3).
  *
  * The simulator used to hand the whole page of ~50 groups to the
  * document: the offer list (~3400px) and the 07:00-22:00 grid (900px)

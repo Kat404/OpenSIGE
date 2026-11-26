@@ -1,4 +1,4 @@
-# OpenSIM — Python tooling
+# OpenSIGE — Python tooling
 
 Los scripts de `scripts/` se validan con **ruff** (lint + formato) y **ty** (tipos).
 Ambos ya están en el PATH del sistema; **no se instalan** desde el proyecto.

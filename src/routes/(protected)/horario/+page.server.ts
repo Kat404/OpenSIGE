@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Horario semanal loader (Phase 3 Tarea 3.3; Phase 4 N6; T9.11).
+ * OpenSIGE — Horario semanal loader (Phase 3 Tarea 3.3; Phase 4 N6; T9.11).
  *
  * Resolves the current student's enrolled subjects through
  * `getCurrentEnrollment` (shared with the dashboard) and joins them
@@ -35,10 +35,10 @@ import { getDb } from "#lib/server/db";
 import { subjects } from "#lib/server/db/schema";
 import { getCurrentEnrollment, getCurrentPeriod } from "#lib/server/enrollment";
 
-import type { OpenSimWorkerEnv } from "../../../cloudflare-workers";
+import type { OpenSigeWorkerEnv } from "../../../cloudflare-workers";
 import type { PageServerLoad } from "./$types";
 
-const env = workerEnv as OpenSimWorkerEnv;
+const env = workerEnv as OpenSigeWorkerEnv;
 
 export type DayLetter = "L" | "M" | "X" | "J" | "V" | "S" | "D";
 

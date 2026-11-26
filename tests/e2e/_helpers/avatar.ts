@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Avatar overlap test helpers (Phase 6.1, U3 acceptance criteria
+ * OpenSIGE — Avatar overlap test helpers (Phase 6.1, U3 acceptance criteria
  * AC6–AC11). Geometry + color + WCAG contrast primitives used by
  * `tests/e2e/avatar-overlap.spec.ts`.
  *

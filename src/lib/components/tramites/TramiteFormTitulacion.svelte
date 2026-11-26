@@ -1,9 +1,9 @@
 <!--
-  OpenSIM — Titulación form (Phase 4 Tarea 4.2).
+  OpenSIGE — Titulación form (Phase 4 Tarea 4.2).
 
   Static form surface. Requires all credits + Servicio Social done.
   Submission is a Phase 5+ concern; for now the form posts to the
-  page's default action, which refuses the submission: OpenSIM
+  page's default action, which refuses the submission: OpenSIGE
   stores no procedure request yet.
 -->
 <script lang="ts">

@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Shared types for the Reinscripción simulator.
+ * OpenSIGE — Shared types for the Reinscripción simulator.
  *
  * The page loader (`/reinscripcion/+page.server.ts`) emits these
  * shapes so the simulator component can render the catalog without

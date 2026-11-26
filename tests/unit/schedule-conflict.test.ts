@@ -1,5 +1,5 @@
 /**
- * OpenSIM — Schedule conflict detection unit tests.
+ * OpenSIGE — Schedule conflict detection unit tests.
  *
  * The conflict detector is the heart of the Reinscripción simulator
  * (Phase 4 Tarea 4.1). It is a pure function on

@@ -1,7 +1,7 @@
 <!--
-  OpenSIM — Public landing page.
+  OpenSIGE — Public landing page.
 
-  This is the front door of the app, so it says what OpenSIM is and
+  This is the front door of the app, so it says what OpenSIGE is and
   what it is not. The previous version of this route was the UI
   component inventory: a gallery of atoms with hardcoded demo
   fixtures, reachable by anyone who opened the site. The inventory is
@@ -17,20 +17,21 @@ import { Card } from "#lib/components/ui";
 </script>
 
 <svelte:head>
-	<title>OpenSIM — Rediseño libre del SIM del TecNM Morelia</title>
+	<title>OpenSIGE — Sistema Integral de Gestión Educativa, abierto</title>
 	<meta
 		name="description"
-		content="OpenSIM es un rediseño libre del Sistema Integral Modular del Instituto Tecnológico de Morelia. La versión 1 cubre la carrera de Ingeniería en Sistemas Computacionales (ISIC-2010-224)."
+		content="OpenSIGE es un sistema integral de gestión educativa de código abierto: el expediente del alumno, las colas del personal y los trámites que los conectan. La versión 1 cubre el campus del Instituto Tecnológico de Morelia."
 	>
 </svelte:head>
 
 <main class="landing">
 	<header class="landing__header">
-		<p class="landing__eyebrow">Rediseño libre · TecNM Morelia</p>
-		<h1 class="landing__title">OpenSIM</h1>
+		<p class="landing__eyebrow">Gestión educativa · Código abierto</p>
+		<h1 class="landing__title">OpenSIGE</h1>
 		<p class="landing__lead">
-			Una versión libre del Sistema Integral Modular, construida sobre el catálogo que el Instituto
-			Tecnológico de Morelia publica — y sin inventar lo que no publica.
+			El expediente del alumno, las colas del personal y los trámites que los conectan. Un
+			sistema institucional que se apoya en los datos que la institución publica — y que
+			declara lo que no publica.
 		</p>
 		<div class="landing__actions">
 			<a class="btn btn--primary btn--md" href="/login">Entrar con tu número de control</a>
@@ -41,13 +42,14 @@ import { Card } from "#lib/components/ui";
 	<section class="landing__section">
 		<h2 class="landing__h2">Qué es real y qué no</h2>
 		<p class="landing__text">
-			El SIM es el sistema que administra la carrera. Publica parte de su información académica y
-			ninguna de su planeación, así que una copia fiel es imposible por construcción. OpenSIM toma
-			en serio la mitad publicada y declara la otra.
+			El SIM del TecNM Morelia administra hoy la carrera y publica parte de su información
+			académica y ninguna de su planeación. OpenSIGE es un sistema propio: toma el catálogo
+			publicado como dato verificado y construye encima las reglas, los roles y los trámites
+			que el SIM no expone.
 		</p>
 
 		<div class="landing__grid">
-			<Card title="Verificado del SIM" description="Lo que el TecNM publica">
+			<Card title="Verificado del TecNM" description="Lo que el Instituto publica">
 				<ul class="landing__list">
 					<li>Materias, códigos, créditos y prerrequisitos del plan ISIC-2010-224.</li>
 					<li>El catálogo de oferta: 468 grupos.</li>
@@ -58,7 +60,7 @@ import { Card } from "#lib/components/ui";
 				</ul>
 			</Card>
 
-			<Card title="Fuera de alcance" description="Lo que no se inventa">
+			<Card title="Declarado, no inventado" description="Lo que todavía no existe">
 				<ul class="landing__list">
 					<li>
 						Horarios, salones y edificios: el portal no los publica hasta la inscripción, así que
@@ -76,9 +78,10 @@ import { Card } from "#lib/components/ui";
 	<section class="landing__section">
 		<h2 class="landing__h2">Alcance de la versión 1</h2>
 		<p class="landing__text">
-			La versión 1 cubre una sola carrera: <strong>Ingeniería en Sistemas Computacionales</strong>
-			(plan ISIC-2010-224). Las demás quedan fuera mientras sus datos no sean obtenibles. El alumno
-			de demostración es un dato de ejemplo, no una persona real.
+			La versión 1 cubre un campus y una sola carrera:
+			<strong>Ingeniería en Sistemas Computacionales</strong> (plan ISIC-2010-224). Las demás
+			quedan fuera mientras sus datos no sean obtenibles. El alumno de demostración es un dato
+			de ejemplo, no una persona real.
 		</p>
 	</section>
 

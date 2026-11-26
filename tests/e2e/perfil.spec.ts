@@ -1,5 +1,5 @@
 /**
- * OpenSIM — /perfil functional spec (S6).
+ * OpenSIGE — /perfil functional spec (S6).
  *
  * The profile page is the one protected page that loads the student's
  * OWN row — CURP and birth state included — instead of the
@@ -23,7 +23,7 @@ if (process.env.OPENSIM_TEST_PASSWORD === undefined && existsSync(".env")) {
 
 const CONTROL_NUMBER = "12345678";
 const FULL_NAME = "Sofía Ramírez Aguirre";
-const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensim-dev-2026";
+const PASSWORD = process.env.OPENSIM_TEST_PASSWORD ?? "opensige-dev-2026";
 
 async function signIn(page: Page) {
 	await page.goto("/login");

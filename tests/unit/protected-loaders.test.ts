@@ -1,5 +1,5 @@
 /**
- * OpenSIM — `(protected)` loader unit tests (Phase 11 T11.5).
+ * OpenSIGE — `(protected)` loader unit tests (Phase 11 T11.5).
  *
  * The five loaders the request layer never exercised: horario,
  * dashboard, retícula, kardex and trámites. Each one owns a data
@@ -966,7 +966,7 @@ describe("trámites form action", () => {
 		expect(result.data.procedure).toBe("inventado");
 	});
 
-	it("refuses the three known procedure ids: OpenSIM does not store trámites yet", async () => {
+	it("refuses the three known procedure ids: OpenSIGE does not store trámites yet", async () => {
 		for (const procedure of ["servicio-social", "residencia", "titulacion"]) {
 			const event = makeEvent({
 				user: makeUser(),

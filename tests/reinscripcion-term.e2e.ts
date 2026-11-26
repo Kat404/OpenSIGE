@@ -1,5 +1,5 @@
 /**
- * OpenSIM — the term /reinscripcion offers, judged by an agent.
+ * OpenSIGE — the term /reinscripcion offers, judged by an agent.
  *
  * T10.1. The enrolment period used to be the student's most recent progress
  * row, ordered by `desc(period)` on the term NAME as text, so

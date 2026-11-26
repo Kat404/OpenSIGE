@@ -1,5 +1,5 @@
 /**
- * OpenSIM — axe-core WCAG 2.1 AA scan: /temario (T9.12).
+ * OpenSIGE — axe-core WCAG 2.1 AA scan: /temario (T9.12).
  *
  * The page ships 68 subject rows plus a collapsed syllabus per published
  * subject, so this is also the regression gate on its node budget: an
