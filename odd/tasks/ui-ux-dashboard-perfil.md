@@ -284,7 +284,7 @@ Lo que dijo la QA de la página:
   `git push origin main` fue rechazado con `non-fast-forward`. Fast-forward a `b5a69cc` y
   `git push codeberg main` → los dos remotos en `b5a69cc`. La causa de fondo es que `origin`
   llevaba **un solo** push URL: un `git push` a secas nunca llegaba a Codeberg. Se le dieron
-  los dos (`git@github.com:Kat404/OpenSIM.git` y `ssh://git@codeberg.org/Kat404/OpenSIM.git`),
+  los dos (`git@github.com:Kat404/OpenSIGE.git` y `ssh://git@codeberg.org/Kat404/OpenSIM.git`),
   y la receta y `AGENTS.md` ahora dicen cuál es cuál y con qué comando se configura.
 - **2026-10-22 — S1, S2 y S5 cerradas.** La causa del desbordamiento está medida, no supuesta:
   el pie de la tarjeta es una fila flex y una fila flex no encoge una etiqueta `nowrap`, así
