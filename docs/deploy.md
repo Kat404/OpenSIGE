@@ -21,8 +21,7 @@ la base de datos `opensim` **ya existe** — verificado 2026-10-06.
 	"name": "opensim",
 	"compatibility_date": "2026-10-01",
 	"compatibility_flags": ["nodejs_compat"],
-	"main": ".svelte-kit/cloudflare/_worker.js",
-	"assets": { "binding": "ASSETS", "directory": ".svelte-kit/cloudflare" },
+	"assets": { "binding": "ASSETS", "directory": ".svelte-kit/cloudflare/client" },
 	"workers_dev": true,
 	"preview_urls": false,
 	"d1_databases": [{
@@ -34,12 +33,12 @@ la base de datos `opensim` **ya existe** — verificado 2026-10-06.
 }
 ```
 
-`nodejs_compat` está activo — necesario para `crypto.subtle` (PBKDF2). `assets` binding sirve los estáticos desde `.svelte-kit/cloudflare` después de `pnpm build`. `workers_dev: true` expone la URL `opensim.<account>.workers.dev` (cambiar a `routes` cuando se configure un dominio custom).
+`nodejs_compat` está activo — necesario para `crypto.subtle` (PBKDF2). `assets` binding sirve los estáticos desde `.svelte-kit/cloudflare/client` después de `pnpm build`. `main` no está en la config: `@sveltejs/adapter-cloudflare` 9 fija la entrada del Worker y escribe la config desplegable en `.svelte-kit/cloudflare/worker/wrangler.json` (a la que apunta `.wrangler/deploy/config.json`). `workers_dev: true` expone la URL `opensim.<account>.workers.dev` (cambiar a `routes` cuando se configure un dominio custom).
 
 ## Prerrequisitos en la máquina del operador
 
-- `wrangler` ≥ 4.145 (instalado vía pnpm; 4.147 disponible). En este host: 4.145.0.
-- `pnpm` 9.x
+- `wrangler` ≥ 4.168 (instalado vía pnpm; el repo usa 4.168.0).
+- `pnpm` 12.23.0 (fijado en `package.json` y en `Containerfile.ci`)
 - Credenciales de Cloudflare (OAuth via `wrangler login` o `CLOUDFLARE_API_TOKEN` con los scopes `Account: D1:Edit`, `Account: Workers Scripts:Edit`, `Account: Account Settings:Read`).
 - Una cuenta Cloudflare con el subdominio `workers.dev` activo (incluido en el plan Free).
 
@@ -79,6 +78,10 @@ Config alternativa si mantenés el repo limpio:
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "opensim-prod",
+	// `-c` salta la config de deploy que genera el build, así que
+	// esta alternativa necesita su propio `main` y `assets`.
+	"main": ".svelte-kit/cloudflare/worker/index.js",
+	"assets": { "binding": "ASSETS", "directory": ".svelte-kit/cloudflare/client" },
 	"d1_databases": [{
 		"binding": "DB",
 		"database_name": "opensim",
@@ -114,8 +117,10 @@ wrangler d1 execute opensim --remote --file=src/lib/server/db/seed.sql
 ```bash
 pnpm build
 # Genera:
-#   .svelte-kit/cloudflare/_worker.js   (main worker)
-#   .svelte-kit/cloudflare/             (static assets)
+#   .svelte-kit/cloudflare/worker/index.js   (main worker)
+#   .svelte-kit/cloudflare/worker/wrangler.json (config desplegable)
+#   .svelte-kit/cloudflare/client/            (static assets)
+#   .wrangler/deploy/config.json              (lo que usa `wrangler deploy`)
 ```
 
 ### 6. Deploy
@@ -217,4 +222,4 @@ wrangler tail
 | `Could not resolve binding 'DB'` | `wrangler.jsonc` no tiene el d1_databases entry | Verificar el `d1_databases` block |
 | `Module not found: cloudflare:workers` | `nodejs_compat` flag falta | Agregar a `compatibility_flags` |
 | 5xx en `/dashboard` | `auth_sessions` table vacía después de seed | Re-aplicar `0001` y `0002` migrations |
-| Asset 404s en rutas protegidas | `_worker.js` no incluye el fallback de SvelteKit | Rebuild con `pnpm build` |
+| Asset 404s en rutas protegidas | el worker no incluye el fallback de SvelteKit | Rebuild con `pnpm build` |
