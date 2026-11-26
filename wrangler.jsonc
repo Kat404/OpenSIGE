@@ -9,10 +9,15 @@
 	"account_id": "81556e2f476ba0a74c12b6a8e5394d0b",
 	"compatibility_date": "2026-10-01",
 	"compatibility_flags": ["nodejs_compat"],
-	"main": ".svelte-kit/cloudflare/_worker.js",
+	// No `main` here: @sveltejs/adapter-cloudflare 9 sets the Worker entry
+	// itself (and rejects a `main` pointing into `.svelte-kit/cloudflare`).
+	// The build writes the deployable config to
+	// `.svelte-kit/cloudflare/worker/wrangler.json` and points
+	// `.wrangler/deploy/config.json` at it, which is what `wrangler deploy`
+	// picks up.
 	"assets": {
 		"binding": "ASSETS",
-		"directory": ".svelte-kit/cloudflare",
+		"directory": ".svelte-kit/cloudflare/client",
 	},
 	"workers_dev": true,
 	// preview_urls disabled: each `wrangler deploy` previously published
@@ -27,7 +32,7 @@
 	// src/lib/server/auth.ts (P0-4 / audit R8-8). Every 6 hours the
 	// worker invokes auth.scheduled, which bulk-DELETEs expired
 	// sessions and rate-limit buckets. SvelteKit's
-	// @sveltejs/adapter-cloudflare 8 only emits a `fetch` handler;
+	// @sveltejs/adapter-cloudflare 9 only emits a `fetch` handler;
 	// the `scheduled` method is wired onto the default export by
 	// scripts/inject-scheduled-handler.mjs (runs after vite build,
 	// see package.json `build` script). Local dev: `wrangler dev`

@@ -59,17 +59,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN chromium --version
 
 # Pin pnpm to match host contract (per TallerAgentes precedent).
-# Mirrors packageManager: pnpm@12.13.0 in package.json:6 so the
+# Mirrors packageManager: pnpm@12.23.0 in package.json:6 so the
 # bind-mount of host node_modules into the container uses matching
 # pnpm major. If Corepack is installed in the base image it will
 # rewrite this binary at runtime; the version line below still
 # documents the expected pinned version.
-RUN npm install -g pnpm@12.13.0 \
+RUN npm install -g pnpm@12.23.0 \
 	&& pnpm --version
 
 WORKDIR /repo
 
 ENV CI=true
+
+# The image installs Chromium with apt (above), so it does not carry
+# Playwright's own download. playwright.config.ts uses Playwright's
+# browser by default and honours this override.
+ENV PLAYWRIGHT_CHROMIUM_PATH=/usr/bin/chromium
 
 # Default command: run the in-container QA gate.
 # The host's `just ci` recipe calls `podman run ... opensim-ci:latest`

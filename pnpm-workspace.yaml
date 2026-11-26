@@ -5,9 +5,9 @@ allowBuilds:
   esbuild: true
   workerd: true
 minimumReleaseAgeExclude:
-  - "@types/node@26.6.4"
+  - "@types/node@26.6.4 || 26.6.10"
   - wrangler@4.147.0 || 4.160.0
-  - e2e@0.21.1
+  - e2e@0.21.1 || 0.25.0
   - "@voidzero-dev/vite-plus-core@1.5.1 || 1.6.0 || 8.3.8000"
   - "@voidzero-dev/vite-plus-darwin-arm64@1.5.1 || 1.6.0 || 1.7.0"
   - "@voidzero-dev/vite-plus-darwin-x64@1.5.1 || 1.6.0 || 1.7.0"
@@ -18,16 +18,13 @@ minimumReleaseAgeExclude:
   - "@voidzero-dev/vite-plus-win32-arm64-msvc@1.5.1 || 1.6.0 || 1.7.0"
   - "@voidzero-dev/vite-plus-win32-x64-msvc@1.5.1 || 1.6.0 || 1.7.0"
   - vite-plus@1.5.1 || 1.6.0 || 1.7.0
-  # Same-day releases the maintainer asked for on 2026-11-10; the 24h
-  # supply-chain age rule otherwise holds them back. Drop any entry you
-  # would rather age first.
-  - "@lucide/svelte@1.71.0"
-  - ai@7.0.169
-  - "@ai-sdk/openai-compatible@3.0.90"
-  - "@sveltejs/kit@3.2.0"
-  - "@cloudflare/workers-types@5.20261110.1"
-  - "@ai-sdk/gateway@4.0.142"
-  - "@ai-sdk/provider-utils@5.0.79"
+  - "@lucide/svelte@1.71.0 || 1.80.0"
+  - ai@7.0.169 || 7.0.182
+  - "@ai-sdk/openai-compatible@3.0.90 || 3.0.95"
+  - "@sveltejs/kit@3.2.0 || 3.4.1"
+  - "@cloudflare/workers-types@5.20261110.1 || 5.20261125.1"
+  - "@ai-sdk/gateway@4.0.142 || 4.0.155"
+  - "@ai-sdk/provider-utils@5.0.79 || 5.0.84"
   - "@cloudflare/workerd-darwin-64@1.20261110.1"
   - "@cloudflare/workerd-darwin-arm64@1.20261110.1"
   - "@cloudflare/workerd-linux-64@1.20261110.1"
@@ -35,9 +32,16 @@ minimumReleaseAgeExclude:
   - "@cloudflare/workerd-windows-64@1.20261110.1"
   - miniflare@5.20261110.0-beta
   - workerd@1.20261110.1
+  # Same-day releases the maintainer asked for on 2026-11-25 ("update to
+  # latest everything possible"); the 24h supply-chain age rule otherwise
+  # holds them back. Drop any entry you would rather age first.
+  - "@sveltejs/adapter-cloudflare@9.0.1"
+  - svelte@5.59.2
+  - "@e2e-dev/web@0.17.0"
+  - "@e2e-dev/core@0.25.0"
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
-  vite-plus: 1.7.0
+  vite: npm:@voidzero-dev/vite-plus-core@8.3.8001
+  vite-plus: 1.8.0
 overrides:
   vite@*: "catalog:"
   # GHSA-55wc-3pg8-jfw6 + 5 sibling undici advisories: miniflare pins 7.30.1

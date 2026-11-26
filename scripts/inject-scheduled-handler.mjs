@@ -2,12 +2,12 @@
 /**
  * OpenSIM — Post-build scheduled-handler injector.
  *
- * `@sveltejs/adapter-cloudflare` 8 emits `_worker.js` with only a
- * `fetch` handler on the default export. To run a Cloudflare cron
- * trigger (P0-4 / audit R8-8), the worker also needs a `scheduled`
- * method on that export.
+ * `@sveltejs/adapter-cloudflare` 9 emits the Worker entry at
+ * `.svelte-kit/cloudflare/worker/index.js` with only a `fetch` handler on
+ * the default export. To run a Cloudflare cron trigger (P0-4 / audit R8-8),
+ * the worker also needs a `scheduled` method on that export.
  *
- * This script reads `_worker.js`, locates the default export's object
+ * This script reads that file, locates the default export's object
  * literal, and inserts a `scheduled(event, env, ctx)` method that
  * performs the bulk prune via raw SQL. The two DELETEs mirror
  * `pruneExpiredSessions` and `pruneExpiredAttempts` in
@@ -27,7 +27,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 
-const WORKER_PATH = ".svelte-kit/cloudflare/_worker.js";
+const WORKER_PATH = ".svelte-kit/cloudflare/worker/index.js";
 
 if (!existsSync(WORKER_PATH)) {
 	console.error(`[inject-scheduled] ${WORKER_PATH} not found — was vite build skipped?`);
