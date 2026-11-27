@@ -11,7 +11,7 @@ FROM node:24-bookworm-slim
 
 LABEL org.opencontainers.image.title="opensige-ci"
 LABEL org.opencontainers.image.description="Reproducible CI gate for opensim (Bookworm + Node 24 + pnpm + just + Chromium)"
-LABEL org.opencontainers.image.source="https://github.com/Kat404/OpenSIM"
+LABEL org.opencontainers.image.source="https://github.com/Kat404/OpenSIGE"
 LABEL org.opencontainers.image.licenses="Unlicense"
 
 # System deps: bash (just recipes use bash), just (command
